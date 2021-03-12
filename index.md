@@ -2,6 +2,11 @@
 data:
   libraryCategories: []
   verificationCategories:
+  - name: 2D_query
+    pages:
+    - icon: ':x:'
+      path: 2D_query/accumulate2D.test.cpp
+      title: 2D_query/accumulate2D.test.cpp
   - name: .
     pages:
     - icon: ':heavy_check_mark:'
