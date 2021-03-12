@@ -1,6 +1,7 @@
 #include <vector>
 #include <iostream>
 #include <numeric>
+#define PROBLEM "https://old.yosupo.jp/problem/unionfind"
 using namespace std;
 
 struct union_find{
