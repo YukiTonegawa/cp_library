@@ -14,14 +14,14 @@ data:
   bundledCode: "#line 1 \"2D_query/accumulate2D.test.cpp\"\n#include <vector>\n#include\
     \ <iostream>\n#include <functional>\n#include <cassert>\n#define PROBLEM \"https://atcoder.jp/contests/abc106/tasks/abc106_d\"\
     \nusing namespace std;\n\ntemplate<typename T>\nstruct accumulate2D{\n  vector<vector<T>>\
-    \ sum;\n\n  function<T(T, T)> add = [](T a, T b){return a + b;};\n  function<T(T,\
+    \ sum;\n  function<T(T, T)> add = [](T a, T b){return a + b;};\n  function<T(T,\
     \ T)> sub = [](T a, T b){return a - b;};\n\n  accumulate2D(const vector<vector<T>>\
-    \ &v){\n    assert(v.size() > 0);\n    assert(v[0].size() > 0);\n\n    int n =\
-    \ v.size(), m = v[0].size();\n    sum.resize(n, vector<T>(m));\n    for(int j=0;j<m;j++){\n\
+    \ &v){\n    assert(v.size() > 0);\n    assert(v[0].size() > 0);\n    int n = v.size(),\
+    \ m = v[0].size();\n    sum.resize(n, vector<T>(m));\n    for(int j=0;j<m;j++){\n\
     \      for(int i=0;i<n;i++){\n        sum[i][j] = add((i==0?0:sum[i-1][j]), v[i][j]);\n\
     \      }\n    }\n    for(int i=0;i<n;i++){\n      for(int j=0;j<m;j++){\n    \
     \    sum[i][j] = add(sum[i][j], (j==0?0:sum[i][j-1]));\n      }\n    }\n  }\n\
-    \  T getsum(int lx, int rx, int ly, int ry){\n    T upper_left = (lx==0||ly==0?0:sum[lx-1][ly-1]);\n\
+    \  \n  T getsum(int lx, int rx, int ly, int ry){\n    T upper_left = (lx==0||ly==0?0:sum[lx-1][ly-1]);\n\
     \    T lower_left = (rx==0||ly==0?0:sum[rx-1][ly-1]);\n    T upper_right = (lx==0||ry==0?0:sum[lx-1][ry-1]);\n\
     \    T lower_right = (rx==0||ry==0?0:sum[rx-1][ry-1]);\n    return sub(add(upper_left,\
     \ lower_right), add(lower_left, upper_right));\n  }\n};\n\nint main(){\n  int\
@@ -32,14 +32,14 @@ data:
   code: "#include <vector>\n#include <iostream>\n#include <functional>\n#include <cassert>\n\
     #define PROBLEM \"https://atcoder.jp/contests/abc106/tasks/abc106_d\"\nusing namespace\
     \ std;\n\ntemplate<typename T>\nstruct accumulate2D{\n  vector<vector<T>> sum;\n\
-    \n  function<T(T, T)> add = [](T a, T b){return a + b;};\n  function<T(T, T)>\
-    \ sub = [](T a, T b){return a - b;};\n\n  accumulate2D(const vector<vector<T>>\
-    \ &v){\n    assert(v.size() > 0);\n    assert(v[0].size() > 0);\n\n    int n =\
-    \ v.size(), m = v[0].size();\n    sum.resize(n, vector<T>(m));\n    for(int j=0;j<m;j++){\n\
+    \  function<T(T, T)> add = [](T a, T b){return a + b;};\n  function<T(T, T)> sub\
+    \ = [](T a, T b){return a - b;};\n\n  accumulate2D(const vector<vector<T>> &v){\n\
+    \    assert(v.size() > 0);\n    assert(v[0].size() > 0);\n    int n = v.size(),\
+    \ m = v[0].size();\n    sum.resize(n, vector<T>(m));\n    for(int j=0;j<m;j++){\n\
     \      for(int i=0;i<n;i++){\n        sum[i][j] = add((i==0?0:sum[i-1][j]), v[i][j]);\n\
     \      }\n    }\n    for(int i=0;i<n;i++){\n      for(int j=0;j<m;j++){\n    \
     \    sum[i][j] = add(sum[i][j], (j==0?0:sum[i][j-1]));\n      }\n    }\n  }\n\
-    \  T getsum(int lx, int rx, int ly, int ry){\n    T upper_left = (lx==0||ly==0?0:sum[lx-1][ly-1]);\n\
+    \  \n  T getsum(int lx, int rx, int ly, int ry){\n    T upper_left = (lx==0||ly==0?0:sum[lx-1][ly-1]);\n\
     \    T lower_left = (rx==0||ly==0?0:sum[rx-1][ly-1]);\n    T upper_right = (lx==0||ry==0?0:sum[lx-1][ry-1]);\n\
     \    T lower_right = (rx==0||ry==0?0:sum[rx-1][ry-1]);\n    return sub(add(upper_left,\
     \ lower_right), add(lower_left, upper_right));\n  }\n};\n\nint main(){\n  int\
@@ -51,7 +51,7 @@ data:
   isVerificationFile: true
   path: 2D_query/accumulate2D.test.cpp
   requiredBy: []
-  timestamp: '2021-03-13 03:57:41+09:00'
+  timestamp: '2021-03-13 17:56:13+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: 2D_query/accumulate2D.test.cpp
