@@ -8,14 +8,12 @@ using namespace std;
 template<typename T>
 struct accumulate2D{
   vector<vector<T>> sum;
-
   function<T(T, T)> add = [](T a, T b){return a + b;};
   function<T(T, T)> sub = [](T a, T b){return a - b;};
 
   accumulate2D(const vector<vector<T>> &v){
     assert(v.size() > 0);
     assert(v[0].size() > 0);
-
     int n = v.size(), m = v[0].size();
     sum.resize(n, vector<T>(m));
     for(int j=0;j<m;j++){
@@ -29,6 +27,7 @@ struct accumulate2D{
       }
     }
   }
+  
   T getsum(int lx, int rx, int ly, int ry){
     T upper_left = (lx==0||ly==0?0:sum[lx-1][ly-1]);
     T lower_left = (rx==0||ly==0?0:sum[rx-1][ly-1]);
