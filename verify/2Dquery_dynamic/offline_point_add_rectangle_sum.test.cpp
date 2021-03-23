@@ -32,7 +32,7 @@ struct BIT{
   }
 };
 
-template<typename T=long long, typename Idx=int>
+template<typename T = long long, typename Idx = int>
 struct point_add_rectangle_sum{
   int M = 1;
   std::vector<Idx> X;

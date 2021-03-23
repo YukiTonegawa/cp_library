@@ -2,7 +2,6 @@
 #include <iostream>
 #include <functional>
 #include <cassert>
-//#define PROBLEM "https://atcoder.jp/contests/abc106/tasks/abc106_d"
 
 template<typename T>
 struct accumulate2D{
@@ -40,20 +39,3 @@ struct accumulate2D{
     return sub(add(upper_left, lower_right), add(lower_left, upper_right));
   }
 };
-
-int main(){
-  int n, m, q;
-  std::cin >> n >> m >> q;
-  std::vector<std::vector<int>> v(n, std::vector<int>(n, 0));
-  for(int i=0;i<m;i++){
-    int l, r;
-    std::cin >> l >> r;
-    v[l-1][r-1]++;
-  }
-  accumulate2D ac(v);
-  for(int i=0;i<q;i++){
-    int l, r;
-    std::cin >> l >> r;
-    std::cout << ac.getsum(l-1, n, 0, r) << '\n';
-  }
-}
