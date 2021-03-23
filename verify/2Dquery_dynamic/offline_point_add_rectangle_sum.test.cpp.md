@@ -11,9 +11,9 @@ data:
     PROBLEM: https://old.yosupo.jp/problem/point_add_rectangle_sum
     links:
     - https://old.yosupo.jp/problem/point_add_rectangle_sum
-  bundledCode: "#line 1 \"2D_query/offline_point_add_rectangle_sum.test.cpp\"\n#include\
-    \ <vector>\n#include <iostream>\n#include <tuple>\n#include <array>\n#include\
-    \ <algorithm>\n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_rectangle_sum\"\
+  bundledCode: "#line 1 \"verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp\"\
+    \n#include <vector>\n#include <iostream>\n#include <tuple>\n#include <array>\n\
+    #include <algorithm>\n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\ntemplate<typename T = long long>\nstruct BIT{\n  int M=1;\n  std::vector<T>\
     \ sum;\n\n  BIT(){}\n  BIT(int N): M(N+1), sum(M+1, 0){}\n  BIT(const std::vector<T>\
     \ &v): M(v.size() + 1), sum(1){\n    sum.insert(sum.begin()+1, v.begin(), v.end());\n\
@@ -21,12 +21,12 @@ data:
     \ sum[nxt] += sum[i];\n    }\n  }\n  void add(int k, T x){\n    for(int i=k+1;i<=M;i+=(i&(-i)))\
     \ sum[i] += x;\n  }\n  T getsum(int r){\n    T ret = 0;\n    for(int k=r;k>0;k-=(k&(-k)))\
     \ ret += sum[k];\n    return ret;\n  }\n  T getsum(int l, int r){\n    return\
-    \ getsum(r) - getsum(l);\n  }\n};\n\ntemplate<typename T=long long, typename Idx=int>\n\
-    struct point_add_rectangle_sum{\n  int M = 1;\n  std::vector<Idx> X;\n  std::vector<std::vector<Idx>>\
-    \ Y;\n  std::vector<BIT<T>> BITs;\n  using point = std::tuple<Idx, Idx, T>;\n\n\
-    \  point_add_rectangle_sum(){}\n  point_add_rectangle_sum(std::vector<point> v){\n\
-    \    int n = v.size();\n    sort(v.begin(), v.end(), [](const point &a, const\
-    \ point &b){return std::get<1>(a) < std::get<1>(b);});\n    for(int i=0;i<n;i++)\
+    \ getsum(r) - getsum(l);\n  }\n};\n\ntemplate<typename T = long long, typename\
+    \ Idx = int>\nstruct point_add_rectangle_sum{\n  int M = 1;\n  std::vector<Idx>\
+    \ X;\n  std::vector<std::vector<Idx>> Y;\n  std::vector<BIT<T>> BITs;\n  using\
+    \ point = std::tuple<Idx, Idx, T>;\n\n  point_add_rectangle_sum(){}\n  point_add_rectangle_sum(std::vector<point>\
+    \ v){\n    int n = v.size();\n    sort(v.begin(), v.end(), [](const point &a,\
+    \ const point &b){return std::get<1>(a) < std::get<1>(b);});\n    for(int i=0;i<n;i++)\
     \ X.push_back(std::get<0>(v[i]));\n    sort(X.begin(), X.end());\n    X.erase(std::unique(X.begin(),\
     \ X.end()), X.end());\n    M = (int)X.size() + 1;\n    std::vector<std::vector<T>>\
     \ tmp(M+1);\n    BITs.resize(M+1);\n    Y.resize(M+1);\n    for(int i=0;i<n;i++){\n\
@@ -63,12 +63,12 @@ data:
     \ sum[nxt] += sum[i];\n    }\n  }\n  void add(int k, T x){\n    for(int i=k+1;i<=M;i+=(i&(-i)))\
     \ sum[i] += x;\n  }\n  T getsum(int r){\n    T ret = 0;\n    for(int k=r;k>0;k-=(k&(-k)))\
     \ ret += sum[k];\n    return ret;\n  }\n  T getsum(int l, int r){\n    return\
-    \ getsum(r) - getsum(l);\n  }\n};\n\ntemplate<typename T=long long, typename Idx=int>\n\
-    struct point_add_rectangle_sum{\n  int M = 1;\n  std::vector<Idx> X;\n  std::vector<std::vector<Idx>>\
-    \ Y;\n  std::vector<BIT<T>> BITs;\n  using point = std::tuple<Idx, Idx, T>;\n\n\
-    \  point_add_rectangle_sum(){}\n  point_add_rectangle_sum(std::vector<point> v){\n\
-    \    int n = v.size();\n    sort(v.begin(), v.end(), [](const point &a, const\
-    \ point &b){return std::get<1>(a) < std::get<1>(b);});\n    for(int i=0;i<n;i++)\
+    \ getsum(r) - getsum(l);\n  }\n};\n\ntemplate<typename T = long long, typename\
+    \ Idx = int>\nstruct point_add_rectangle_sum{\n  int M = 1;\n  std::vector<Idx>\
+    \ X;\n  std::vector<std::vector<Idx>> Y;\n  std::vector<BIT<T>> BITs;\n  using\
+    \ point = std::tuple<Idx, Idx, T>;\n\n  point_add_rectangle_sum(){}\n  point_add_rectangle_sum(std::vector<point>\
+    \ v){\n    int n = v.size();\n    sort(v.begin(), v.end(), [](const point &a,\
+    \ const point &b){return std::get<1>(a) < std::get<1>(b);});\n    for(int i=0;i<n;i++)\
     \ X.push_back(std::get<0>(v[i]));\n    sort(X.begin(), X.end());\n    X.erase(std::unique(X.begin(),\
     \ X.end()), X.end());\n    M = (int)X.size() + 1;\n    std::vector<std::vector<T>>\
     \ tmp(M+1);\n    BITs.resize(M+1);\n    Y.resize(M+1);\n    for(int i=0;i<n;i++){\n\
@@ -98,15 +98,15 @@ data:
     \ rect.getsum(s[i][1], s[i][3], s[i][2], s[i][4]) << '\\n';;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: true
-  path: 2D_query/offline_point_add_rectangle_sum.test.cpp
+  path: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-03-15 06:59:51+09:00'
+  timestamp: '2021-03-23 19:56:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: 2D_query/offline_point_add_rectangle_sum.test.cpp
+documentation_of: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/2D_query/offline_point_add_rectangle_sum.test.cpp
-- /verify/2D_query/offline_point_add_rectangle_sum.test.cpp.html
-title: 2D_query/offline_point_add_rectangle_sum.test.cpp
+- /verify/verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
+- /verify/verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp.html
+title: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
 ---
