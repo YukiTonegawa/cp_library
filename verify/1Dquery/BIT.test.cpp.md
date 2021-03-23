@@ -11,8 +11,8 @@ data:
     PROBLEM: https://old.yosupo.jp/problem/static_range_sum
     links:
     - https://old.yosupo.jp/problem/static_range_sum
-  bundledCode: "#line 1 \"verify/1Dquery_dynamic/BIT.test.cpp\"\n#include <vector>\n\
-    #include <iostream>\n#define PROBLEM \"https://old.yosupo.jp/problem/static_range_sum\"\
+  bundledCode: "#line 1 \"verify/1Dquery/BIT.test.cpp\"\n#include <vector>\n#include\
+    \ <iostream>\n#define PROBLEM \"https://old.yosupo.jp/problem/static_range_sum\"\
     \n\ntemplate<typename T = long long>\nstruct BIT{\n  int M=1;\n  std::vector<T>\
     \ sum;\n\n  BIT(){}\n  BIT(int N): M(N+1), sum(M+1, 0){}\n  BIT(const std::vector<T>\
     \ &v): M(v.size() + 1), sum(1){\n    sum.insert(sum.begin()+1, v.begin(), v.end());\n\
@@ -40,15 +40,15 @@ data:
     n';\n  }\n}\n"
   dependsOn: []
   isVerificationFile: true
-  path: verify/1Dquery_dynamic/BIT.test.cpp
+  path: verify/1Dquery/BIT.test.cpp
   requiredBy: []
-  timestamp: '2021-03-23 19:56:31+09:00'
+  timestamp: '2021-03-23 22:06:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/1Dquery_dynamic/BIT.test.cpp
+documentation_of: verify/1Dquery/BIT.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/1Dquery_dynamic/BIT.test.cpp
-- /verify/verify/1Dquery_dynamic/BIT.test.cpp.html
-title: verify/1Dquery_dynamic/BIT.test.cpp
+- /verify/verify/1Dquery/BIT.test.cpp
+- /verify/verify/1Dquery/BIT.test.cpp.html
+title: verify/1Dquery/BIT.test.cpp
 ---

@@ -11,7 +11,7 @@ data:
     PROBLEM: https://old.yosupo.jp/problem/point_add_rectangle_sum
     links:
     - https://old.yosupo.jp/problem/point_add_rectangle_sum
-  bundledCode: "#line 1 \"verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp\"\
+  bundledCode: "#line 1 \"verify/2Dquery/offline_point_add_rectangle_sum.test.cpp\"\
     \n#include <vector>\n#include <iostream>\n#include <tuple>\n#include <array>\n\
     #include <algorithm>\n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_rectangle_sum\"\
     \n\ntemplate<typename T = long long>\nstruct BIT{\n  int M=1;\n  std::vector<T>\
@@ -98,15 +98,15 @@ data:
     \ rect.getsum(s[i][1], s[i][3], s[i][2], s[i][4]) << '\\n';;\n  }\n}\n"
   dependsOn: []
   isVerificationFile: true
-  path: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
+  path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-03-23 19:56:31+09:00'
+  timestamp: '2021-03-23 22:06:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
+documentation_of: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
-- /verify/verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp.html
-title: verify/2Dquery_dynamic/offline_point_add_rectangle_sum.test.cpp
+- /verify/verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
+- /verify/verify/2Dquery/offline_point_add_rectangle_sum.test.cpp.html
+title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
 ---

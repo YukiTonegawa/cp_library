@@ -1,0 +1,91 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
+  _isVerificationFailed: false
+  _pathExtension: cpp
+  _verificationStatusIcon: ':warning:'
+  attributes:
+    links: []
+  bundledCode: "#line 1 \"2Dquery/offline_point_add_rectangle_sum.cpp\"\n#include\
+    \ <vector>\n#include <iostream>\n#include <tuple>\n#include <array>\n#include\
+    \ <algorithm>\n\ntemplate<typename T = long long>\nstruct BIT{\n  int M=1;\n \
+    \ std::vector<T> sum;\n\n  BIT(){}\n  BIT(int N): M(N+1), sum(M+1, 0){}\n  BIT(const\
+    \ std::vector<T> &v): M(v.size() + 1), sum(1){\n    sum.insert(sum.begin()+1,\
+    \ v.begin(), v.end());\n    for(int i=1;i<=v.size();i++){\n      int nxt = i +\
+    \ (i&(-i));\n      if(nxt<=M) sum[nxt] += sum[i];\n    }\n  }\n  void add(int\
+    \ k, T x){\n    for(int i=k+1;i<=M;i+=(i&(-i))) sum[i] += x;\n  }\n  T getsum(int\
+    \ r){\n    T ret = 0;\n    for(int k=r;k>0;k-=(k&(-k))) ret += sum[k];\n    return\
+    \ ret;\n  }\n  T getsum(int l, int r){\n    return getsum(r) - getsum(l);\n  }\n\
+    };\n\ntemplate<typename T = long long, typename Idx = int>\nstruct point_add_rectangle_sum{\n\
+    \  int M = 1;\n  std::vector<Idx> X;\n  std::vector<std::vector<Idx>> Y;\n  std::vector<BIT<T>>\
+    \ BITs;\n  using point = std::tuple<Idx, Idx, T>;\n\n  point_add_rectangle_sum(){}\n\
+    \  point_add_rectangle_sum(std::vector<point> v){\n    int n = v.size();\n   \
+    \ sort(v.begin(), v.end(), [](const point &a, const point &b){return std::get<1>(a)\
+    \ < std::get<1>(b);});\n    for(int i=0;i<n;i++) X.push_back(std::get<0>(v[i]));\n\
+    \    sort(X.begin(), X.end());\n    X.erase(std::unique(X.begin(), X.end()), X.end());\n\
+    \    M = (int)X.size() + 1;\n    std::vector<std::vector<T>> tmp(M+1);\n    BITs.resize(M+1);\n\
+    \    Y.resize(M+1);\n    for(int i=0;i<n;i++){\n      auto [x, y, z] = v[i];\n\
+    \      int k = lower_bound(X.begin(), X.end(), x) - X.begin();\n      for(int\
+    \ j=k+1;j<=M;j+=(j&(-j))){\n        if(Y[j].empty()||Y[j].back()!=y){\n      \
+    \    Y[j].push_back(y);\n          tmp[j].push_back(z);\n        }else{\n    \
+    \      tmp[j].back() += z;\n        }\n      }\n    }\n    for(int i=0;i<=M;i++)\
+    \ BITs[i] = BIT(tmp[i]);\n  }\n  void add(Idx x, Idx y, T z){\n    auto xidx =\
+    \ lower_bound(X.begin(), X.end(), x) - X.begin();\n    for(int i=xidx+1;i<=M;i+=(i&(-i))){\n\
+    \      auto yidx = lower_bound(Y[i].begin(), Y[i].end(), y) - Y[i].begin();\n\
+    \      BITs[i].add(yidx, z);\n    }\n  }\n  T getsum(int rx, Idx ly, Idx ry){\n\
+    \    T ret = 0;\n    for(int i=rx;i>0;i-=(i&(-i))){\n      int right = std::lower_bound(Y[i].begin(),\
+    \ Y[i].end(), ry) - Y[i].begin();\n      int left = std::lower_bound(Y[i].begin(),\
+    \ Y[i].end(), ly) - Y[i].begin();\n      ret += BITs[i].getsum(left, right);\n\
+    \    }\n    return ret;\n  }\n  T getsum(Idx lx, Idx rx, Idx ly, Idx ry){\n  \
+    \  T right = getsum(std::lower_bound(X.begin(), X.end(), rx)-X.begin(), ly, ry);\n\
+    \    T left = getsum(std::lower_bound(X.begin(), X.end(), lx)-X.begin(), ly, ry);\n\
+    \    return right - left;\n  }\n};\n"
+  code: "#include <vector>\n#include <iostream>\n#include <tuple>\n#include <array>\n\
+    #include <algorithm>\n\ntemplate<typename T = long long>\nstruct BIT{\n  int M=1;\n\
+    \  std::vector<T> sum;\n\n  BIT(){}\n  BIT(int N): M(N+1), sum(M+1, 0){}\n  BIT(const\
+    \ std::vector<T> &v): M(v.size() + 1), sum(1){\n    sum.insert(sum.begin()+1,\
+    \ v.begin(), v.end());\n    for(int i=1;i<=v.size();i++){\n      int nxt = i +\
+    \ (i&(-i));\n      if(nxt<=M) sum[nxt] += sum[i];\n    }\n  }\n  void add(int\
+    \ k, T x){\n    for(int i=k+1;i<=M;i+=(i&(-i))) sum[i] += x;\n  }\n  T getsum(int\
+    \ r){\n    T ret = 0;\n    for(int k=r;k>0;k-=(k&(-k))) ret += sum[k];\n    return\
+    \ ret;\n  }\n  T getsum(int l, int r){\n    return getsum(r) - getsum(l);\n  }\n\
+    };\n\ntemplate<typename T = long long, typename Idx = int>\nstruct point_add_rectangle_sum{\n\
+    \  int M = 1;\n  std::vector<Idx> X;\n  std::vector<std::vector<Idx>> Y;\n  std::vector<BIT<T>>\
+    \ BITs;\n  using point = std::tuple<Idx, Idx, T>;\n\n  point_add_rectangle_sum(){}\n\
+    \  point_add_rectangle_sum(std::vector<point> v){\n    int n = v.size();\n   \
+    \ sort(v.begin(), v.end(), [](const point &a, const point &b){return std::get<1>(a)\
+    \ < std::get<1>(b);});\n    for(int i=0;i<n;i++) X.push_back(std::get<0>(v[i]));\n\
+    \    sort(X.begin(), X.end());\n    X.erase(std::unique(X.begin(), X.end()), X.end());\n\
+    \    M = (int)X.size() + 1;\n    std::vector<std::vector<T>> tmp(M+1);\n    BITs.resize(M+1);\n\
+    \    Y.resize(M+1);\n    for(int i=0;i<n;i++){\n      auto [x, y, z] = v[i];\n\
+    \      int k = lower_bound(X.begin(), X.end(), x) - X.begin();\n      for(int\
+    \ j=k+1;j<=M;j+=(j&(-j))){\n        if(Y[j].empty()||Y[j].back()!=y){\n      \
+    \    Y[j].push_back(y);\n          tmp[j].push_back(z);\n        }else{\n    \
+    \      tmp[j].back() += z;\n        }\n      }\n    }\n    for(int i=0;i<=M;i++)\
+    \ BITs[i] = BIT(tmp[i]);\n  }\n  void add(Idx x, Idx y, T z){\n    auto xidx =\
+    \ lower_bound(X.begin(), X.end(), x) - X.begin();\n    for(int i=xidx+1;i<=M;i+=(i&(-i))){\n\
+    \      auto yidx = lower_bound(Y[i].begin(), Y[i].end(), y) - Y[i].begin();\n\
+    \      BITs[i].add(yidx, z);\n    }\n  }\n  T getsum(int rx, Idx ly, Idx ry){\n\
+    \    T ret = 0;\n    for(int i=rx;i>0;i-=(i&(-i))){\n      int right = std::lower_bound(Y[i].begin(),\
+    \ Y[i].end(), ry) - Y[i].begin();\n      int left = std::lower_bound(Y[i].begin(),\
+    \ Y[i].end(), ly) - Y[i].begin();\n      ret += BITs[i].getsum(left, right);\n\
+    \    }\n    return ret;\n  }\n  T getsum(Idx lx, Idx rx, Idx ly, Idx ry){\n  \
+    \  T right = getsum(std::lower_bound(X.begin(), X.end(), rx)-X.begin(), ly, ry);\n\
+    \    T left = getsum(std::lower_bound(X.begin(), X.end(), lx)-X.begin(), ly, ry);\n\
+    \    return right - left;\n  }\n};\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: 2Dquery/offline_point_add_rectangle_sum.cpp
+  requiredBy: []
+  timestamp: '2021-03-23 22:06:13+09:00'
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
+documentation_of: 2Dquery/offline_point_add_rectangle_sum.cpp
+layout: document
+redirect_from:
+- /library/2Dquery/offline_point_add_rectangle_sum.cpp
+- /library/2Dquery/offline_point_add_rectangle_sum.cpp.html
+title: 2Dquery/offline_point_add_rectangle_sum.cpp
+---
