@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include <numeric>
-using namespace std;
 
 struct union_find{
   std::vector<int> par, sz;
