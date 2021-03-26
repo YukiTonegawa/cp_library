@@ -12,20 +12,20 @@ data:
   attributes:
     links: []
   bundledCode: "#line 1 \"union_find/range_union_find.cpp\"\n#include <vector>\n#include\
-    \ <iostream>\n#include <numeric>\n#include <unordered_map>\n#line 3 \"misc/segment_merge.cpp\"\
-    \n#include <map>\n\ntemplate<typename Idx = int >\nstruct segment_merge{\n  const\
-    \ Idx INF = std::numeric_limits<Idx>::max();\n  std::map<Idx, Idx> mp;\n  typename\
-    \ std::map<Idx, Idx>::iterator begin(){return mp.begin();}\n  typename std::map<Idx,\
-    \ Idx>::iterator end(){return mp.end();}\n  segment_merge(){}\n  void insert(Idx\
-    \ l, Idx r, bool merge=true){\n    auto itr = mp.upper_bound(l);\n    if(itr!=mp.begin())\
-    \ itr--;\n    if(itr!=mp.end()&&(merge?itr->second<l:itr->second<=l)) itr++;\n\
-    \    while(itr!=mp.end()&&(merge?itr->first<=r:itr->first<r)){\n      r = std::max(r,\
-    \ itr->second);\n      l = std::min(l, itr->first);\n      itr = mp.erase(itr);\n\
-    \    }\n    mp.emplace(l, r);\n  }\n  std::vector<std::pair<Idx, Idx>> enumerate_include(Idx\
-    \ l, Idx r){\n    auto itr = mp.lower_bound(l);\n    std::vector<std::pair<Idx,\
-    \ Idx>> ret;\n    while(itr!=mp.end()&&itr->second<=r) ret.push_back(*itr++);\n\
-    \    return ret;\n  }\n  std::vector<std::pair<Idx, Idx>> enumerate_intersect(Idx\
-    \ l, Idx r){\n    auto itr = mp.upper_bound(l);\n    std::vector<std::pair<Idx,\
+    \ <iostream>\n#include <numeric>\n#include <unordered_map>\n#include <array>\n\
+    #line 3 \"misc/segment_merge.cpp\"\n#include <map>\n\ntemplate<typename Idx =\
+    \ int >\nstruct segment_merge{\n  const Idx INF = std::numeric_limits<Idx>::max();\n\
+    \  std::map<Idx, Idx> mp;\n  typename std::map<Idx, Idx>::iterator begin(){return\
+    \ mp.begin();}\n  typename std::map<Idx, Idx>::iterator end(){return mp.end();}\n\
+    \  segment_merge(){}\n  void insert(Idx l, Idx r, bool merge=true){\n    auto\
+    \ itr = mp.upper_bound(l);\n    if(itr!=mp.begin()) itr--;\n    if(itr!=mp.end()&&(merge?itr->second<l:itr->second<=l))\
+    \ itr++;\n    while(itr!=mp.end()&&(merge?itr->first<=r:itr->first<r)){\n    \
+    \  r = std::max(r, itr->second);\n      l = std::min(l, itr->first);\n      itr\
+    \ = mp.erase(itr);\n    }\n    mp.emplace(l, r);\n  }\n  std::vector<std::pair<Idx,\
+    \ Idx>> enumerate_include(Idx l, Idx r){\n    auto itr = mp.lower_bound(l);\n\
+    \    std::vector<std::pair<Idx, Idx>> ret;\n    while(itr!=mp.end()&&itr->second<=r)\
+    \ ret.push_back(*itr++);\n    return ret;\n  }\n  std::vector<std::pair<Idx, Idx>>\
+    \ enumerate_intersect(Idx l, Idx r){\n    auto itr = mp.upper_bound(l);\n    std::vector<std::pair<Idx,\
     \ Idx>> ret;\n    while(itr!=mp.begin()&&(itr==mp.end()||itr->second>l)) itr--;\n\
     \    if(itr!=mp.end()&&itr->second<=l) itr++;\n    while(itr!=mp.end()&&itr->first<r)\
     \ ret.push_back(*itr++);\n    return ret;\n  }\n  void erase_include(Idx l, Idx\
@@ -42,49 +42,57 @@ data:
     \    auto itr = mp.upper_bound(p);\n    if(itr!=mp.begin() && (--itr)->second\
     \ > p) return *itr;\n    else return {INF, INF};\n  }\n  bool same(Idx p, Idx\
     \ q){\n    std::pair<Idx, Idx> l = find(p), r = find(q);\n    return l.first!=INF\
-    \ && l.first==r.first;\n  }\n};\n#line 6 \"union_find/range_union_find.cpp\"\n\
+    \ && l.first==r.first;\n  }\n};\n#line 7 \"union_find/range_union_find.cpp\"\n\
     \ntemplate<typename Idx = int >\nstruct range_union_find{\nprivate:\n  segment_merge<Idx>\
-    \ segment;\n  std::unordered_map<Idx, Idx> par, sz;\n\n  void isolated_check(Idx\
+    \ segment;\n  std::unordered_map<Idx, std::array<Idx, 3>> info;\n  void isolated_check(Idx\
     \ u){\n    if(segment.find(u).first == segment.INF){\n      segment.insert(u,\
-    \ u+1, false);\n      sz[u] = 1;\n      par[u] = u;\n    }\n  }\n  Idx _find(Idx\
-    \ u){\n    if(par[u] == u) return u;\n    return par[u] = _find(par[u]);\n  }\n\
-    \  void _unite(Idx u, Idx v){\n    u = _find(u);\n    v = _find(v);\n    if(u\
-    \ == v) return;\n    if(sz[v] > sz[u]) std::swap(u, v);\n    sz[u] += sz[v];\n\
-    \    par[v] = u;\n  }\npublic:\n  range_union_find(){}\n  void compress(Idx l,\
-    \ Idx r){\n    isolated_check(l);\n    for(auto &s:segment.enumerate_intersect(l,\
-    \ r)) _unite(l, s.first);\n    sz[find(l)] += segment.isolated(l, r);\n    segment.insert(l,\
-    \ r, false);\n  }\n  Idx find(Idx u){\n    std::pair<Idx, Idx> p = segment.find(u);\n\
-    \    return (p.first == segment.INF ? u : _find(p.first));\n  }\n  Idx size(Idx\
-    \ u){\n    std::pair<Idx, Idx> p = segment.find(u);\n    return (p.first == segment.INF\
-    \ ? 1 : sz[_find(p.first)]);\n  }\n  bool same(Idx u, Idx v){\n    return find(u)\
-    \ == find(v);\n  }\n  void unite(Idx u, Idx v){\n    isolated_check(u);\n    isolated_check(v);\n\
-    \    u = find(u);\n    v = find(v);\n    if(u == v) return;\n    if(sz[v] > sz[u])\
-    \ std::swap(u, v);\n    sz[u] += sz[v];\n    par[v] = u;\n  }\n};\n"
-  code: "#include <vector>\n#include <iostream>\n#include <numeric>\n#include <unordered_map>\n\
-    #include \"../misc/segment_merge.cpp\"\n\ntemplate<typename Idx = int >\nstruct\
-    \ range_union_find{\nprivate:\n  segment_merge<Idx> segment;\n  std::unordered_map<Idx,\
-    \ Idx> par, sz;\n\n  void isolated_check(Idx u){\n    if(segment.find(u).first\
-    \ == segment.INF){\n      segment.insert(u, u+1, false);\n      sz[u] = 1;\n \
-    \     par[u] = u;\n    }\n  }\n  Idx _find(Idx u){\n    if(par[u] == u) return\
-    \ u;\n    return par[u] = _find(par[u]);\n  }\n  void _unite(Idx u, Idx v){\n\
-    \    u = _find(u);\n    v = _find(v);\n    if(u == v) return;\n    if(sz[v] >\
-    \ sz[u]) std::swap(u, v);\n    sz[u] += sz[v];\n    par[v] = u;\n  }\npublic:\n\
+    \ u+1, false);\n      info.emplace(u, std::array<Idx, 3>{1, 1, u});\n    }\n \
+    \ }\n  Idx _find(Idx u){\n    std::array<Idx, 3> &ui = info.at(u);\n    if(ui[2]\
+    \ == u) return u;\n    return ui[2] = _find(ui[2]);\n  }\n  void _unite(Idx u,\
+    \ Idx v){\n    u = _find(u);\n    v = _find(v);\n    if(u == v) return;\n    std::array<Idx,\
+    \ 3> &ui = info.at(u), &vi = info.at(v);\n    if(vi[1] > ui[1]) vi[0] += ui[0],\
+    \ vi[1]++, ui[2] = v;\n    else ui[0] += vi[0], ui[1]++, vi[2] = u;\n  }\npublic:\n\
     \  range_union_find(){}\n  void compress(Idx l, Idx r){\n    isolated_check(l);\n\
-    \    for(auto &s:segment.enumerate_intersect(l, r)) _unite(l, s.first);\n    sz[find(l)]\
-    \ += segment.isolated(l, r);\n    segment.insert(l, r, false);\n  }\n  Idx find(Idx\
-    \ u){\n    std::pair<Idx, Idx> p = segment.find(u);\n    return (p.first == segment.INF\
-    \ ? u : _find(p.first));\n  }\n  Idx size(Idx u){\n    std::pair<Idx, Idx> p =\
-    \ segment.find(u);\n    return (p.first == segment.INF ? 1 : sz[_find(p.first)]);\n\
-    \  }\n  bool same(Idx u, Idx v){\n    return find(u) == find(v);\n  }\n  void\
-    \ unite(Idx u, Idx v){\n    isolated_check(u);\n    isolated_check(v);\n    u\
-    \ = find(u);\n    v = find(v);\n    if(u == v) return;\n    if(sz[v] > sz[u])\
-    \ std::swap(u, v);\n    sz[u] += sz[v];\n    par[v] = u;\n  }\n};\n"
+    \    Idx lp = find(l);\n    for(auto &s:segment.enumerate_intersect(l, r)) _unite(lp,\
+    \ s.first);\n    lp = _find(lp);\n    std::array<Idx, 3> &li = info.at(lp);\n\
+    \    li[0] += segment.isolated(l, r);\n    segment.insert(l, r, false);\n  }\n\
+    \  Idx find(Idx u){\n    Idx v = segment.find(u).first;\n    if(v == segment.INF)\
+    \ return Idx(u);\n    return _find(v);\n  }\n  Idx size(Idx u){\n    Idx v = segment.find(u).first;\n\
+    \    if(v == segment.INF) return Idx(1);\n    std::array<Idx, 3> &vi = info.at(_find(v));\n\
+    \    return vi[0];\n  }\n  bool same(Idx u, Idx v){\n    return find(u) == find(v);\n\
+    \  }\n  void unite(Idx u, Idx v){\n    isolated_check(u);\n    isolated_check(v);\n\
+    \    u = find(u);\n    v = find(v);\n    if(u == v) return;\n    std::array<Idx,\
+    \ 3> &ui = info.at(u), &vi = info.at(v);\n    if(vi[1] > ui[1]) vi[0] += ui[0],\
+    \ vi[1]++, ui[2] = v;\n    else ui[0] += vi[0], ui[1]++, vi[2] = u;\n  }\n};\n"
+  code: "#include <vector>\n#include <iostream>\n#include <numeric>\n#include <unordered_map>\n\
+    #include <array>\n#include \"../misc/segment_merge.cpp\"\n\ntemplate<typename\
+    \ Idx = int >\nstruct range_union_find{\nprivate:\n  segment_merge<Idx> segment;\n\
+    \  std::unordered_map<Idx, std::array<Idx, 3>> info;\n  void isolated_check(Idx\
+    \ u){\n    if(segment.find(u).first == segment.INF){\n      segment.insert(u,\
+    \ u+1, false);\n      info.emplace(u, std::array<Idx, 3>{1, 1, u});\n    }\n \
+    \ }\n  Idx _find(Idx u){\n    std::array<Idx, 3> &ui = info.at(u);\n    if(ui[2]\
+    \ == u) return u;\n    return ui[2] = _find(ui[2]);\n  }\n  void _unite(Idx u,\
+    \ Idx v){\n    u = _find(u);\n    v = _find(v);\n    if(u == v) return;\n    std::array<Idx,\
+    \ 3> &ui = info.at(u), &vi = info.at(v);\n    if(vi[1] > ui[1]) vi[0] += ui[0],\
+    \ vi[1]++, ui[2] = v;\n    else ui[0] += vi[0], ui[1]++, vi[2] = u;\n  }\npublic:\n\
+    \  range_union_find(){}\n  void compress(Idx l, Idx r){\n    isolated_check(l);\n\
+    \    Idx lp = find(l);\n    for(auto &s:segment.enumerate_intersect(l, r)) _unite(lp,\
+    \ s.first);\n    lp = _find(lp);\n    std::array<Idx, 3> &li = info.at(lp);\n\
+    \    li[0] += segment.isolated(l, r);\n    segment.insert(l, r, false);\n  }\n\
+    \  Idx find(Idx u){\n    Idx v = segment.find(u).first;\n    if(v == segment.INF)\
+    \ return Idx(u);\n    return _find(v);\n  }\n  Idx size(Idx u){\n    Idx v = segment.find(u).first;\n\
+    \    if(v == segment.INF) return Idx(1);\n    std::array<Idx, 3> &vi = info.at(_find(v));\n\
+    \    return vi[0];\n  }\n  bool same(Idx u, Idx v){\n    return find(u) == find(v);\n\
+    \  }\n  void unite(Idx u, Idx v){\n    isolated_check(u);\n    isolated_check(v);\n\
+    \    u = find(u);\n    v = find(v);\n    if(u == v) return;\n    std::array<Idx,\
+    \ 3> &ui = info.at(u), &vi = info.at(v);\n    if(vi[1] > ui[1]) vi[0] += ui[0],\
+    \ vi[1]++, ui[2] = v;\n    else ui[0] += vi[0], ui[1]++, vi[2] = u;\n  }\n};\n"
   dependsOn:
   - misc/segment_merge.cpp
   isVerificationFile: false
   path: union_find/range_union_find.cpp
   requiredBy: []
-  timestamp: '2021-03-23 22:06:13+09:00'
+  timestamp: '2021-03-26 13:43:45+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: union_find/range_union_find.cpp
