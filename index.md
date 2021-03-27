@@ -29,11 +29,21 @@ data:
     - icon: ':warning:'
       path: 2Dquery_static/accumulate2D.cpp
       title: 2Dquery_static/accumulate2D.cpp
+  - name: math
+    pages:
+    - icon: ':warning:'
+      path: math/kth_root.cpp
+      title: math/kth_root.cpp
   - name: misc
     pages:
     - icon: ':warning:'
       path: misc/segment_merge.cpp
       title: misc/segment_merge.cpp
+  - name: technique
+    pages:
+    - icon: ':warning:'
+      path: technique/contrast.cpp
+      title: technique/contrast.cpp
   - name: union_find
     pages:
     - icon: ':warning:'
