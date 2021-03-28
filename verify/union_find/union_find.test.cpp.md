@@ -1,6 +1,9 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':heavy_check_mark:'
+    path: union_find/union_find.cpp
+    title: union_find/union_find.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -12,35 +15,31 @@ data:
     links:
     - https://old.yosupo.jp/problem/unionfind
   bundledCode: "#line 1 \"verify/union_find/union_find.test.cpp\"\n#include <vector>\n\
-    #include <iostream>\n#include <numeric>\n#define PROBLEM \"https://old.yosupo.jp/problem/unionfind\"\
-    \nusing namespace std;\n\nstruct union_find{\n  std::vector<int> par, sz;\n  union_find(int\
-    \ n):par(n), sz(n, 1){\n    std::iota(par.begin(), par.end(), 0);\n  }\n  int\
-    \ find(int u){\n    if(par[u] == u) return u;\n    return par[u] = find(par[u]);\n\
-    \  }\n  int size(int u){\n    return sz[find(u)];\n  }\n  bool same(int u, int\
-    \ v){\n    return find(u) == find(v);\n  }\n  void unite(int u, int v){\n    u\
-    \ = find(u);\n    v = find(v);\n    if(u == v) return;\n    if(sz[v] > sz[u])\
-    \ std::swap(u, v);\n    sz[u] += sz[v];\n    par[v] = u;\n  }\n};\n\nint main(){\n\
-    \  cin.tie(nullptr);\n  ios::sync_with_stdio(false);\n\n  int a, b, c, n, q;\n\
-    \  std::cin >> n >> q;\n  union_find uf(n);\n  for(int i=0;i<q;i++){\n    std::cin\
-    \ >> a >> b >> c;\n    if(a==0) uf.unite(b, c);\n    else std::cout << int(uf.same(b,\
-    \ c)) << '\\n';\n  }\n}\n"
-  code: "#include <vector>\n#include <iostream>\n#include <numeric>\n#define PROBLEM\
-    \ \"https://old.yosupo.jp/problem/unionfind\"\nusing namespace std;\n\nstruct\
-    \ union_find{\n  std::vector<int> par, sz;\n  union_find(int n):par(n), sz(n,\
-    \ 1){\n    std::iota(par.begin(), par.end(), 0);\n  }\n  int find(int u){\n  \
-    \  if(par[u] == u) return u;\n    return par[u] = find(par[u]);\n  }\n  int size(int\
-    \ u){\n    return sz[find(u)];\n  }\n  bool same(int u, int v){\n    return find(u)\
-    \ == find(v);\n  }\n  void unite(int u, int v){\n    u = find(u);\n    v = find(v);\n\
-    \    if(u == v) return;\n    if(sz[v] > sz[u]) std::swap(u, v);\n    sz[u] +=\
-    \ sz[v];\n    par[v] = u;\n  }\n};\n\nint main(){\n  cin.tie(nullptr);\n  ios::sync_with_stdio(false);\n\
-    \n  int a, b, c, n, q;\n  std::cin >> n >> q;\n  union_find uf(n);\n  for(int\
-    \ i=0;i<q;i++){\n    std::cin >> a >> b >> c;\n    if(a==0) uf.unite(b, c);\n\
-    \    else std::cout << int(uf.same(b, c)) << '\\n';\n  }\n}\n"
-  dependsOn: []
+    #include <iostream>\n#include <numeric>\n#line 4 \"union_find/union_find.cpp\"\
+    \n\nstruct union_find{\n  std::vector<int> par, sz;\n  union_find(int n):par(n),\
+    \ sz(n, 1){\n    std::iota(par.begin(), par.end(), 0);\n  }\n  int find(int u){\n\
+    \    if(par[u] == u) return u;\n    return par[u] = find(par[u]);\n  }\n  int\
+    \ size(int u){\n    return sz[find(u)];\n  }\n  bool same(int u, int v){\n   \
+    \ return find(u) == find(v);\n  }\n  void unite(int u, int v){\n    u = find(u);\n\
+    \    v = find(v);\n    if(u == v) return;\n    if(sz[v] > sz[u]) std::swap(u,\
+    \ v);\n    sz[u] += sz[v];\n    par[v] = u;\n  }\n};\n#line 5 \"verify/union_find/union_find.test.cpp\"\
+    \n#define PROBLEM \"https://old.yosupo.jp/problem/unionfind\"\nusing namespace\
+    \ std;\n\nint main(){\n  cin.tie(nullptr);\n  ios::sync_with_stdio(false);\n\n\
+    \  int a, b, c, n, q;\n  std::cin >> n >> q;\n  union_find uf(n);\n  for(int i=0;i<q;i++){\n\
+    \    std::cin >> a >> b >> c;\n    if(a==0) uf.unite(b, c);\n    else std::cout\
+    \ << int(uf.same(b, c)) << '\\n';\n  }\n}\n"
+  code: "#include <vector>\n#include <iostream>\n#include <numeric>\n#include \"../../union_find/union_find.cpp\"\
+    \n#define PROBLEM \"https://old.yosupo.jp/problem/unionfind\"\nusing namespace\
+    \ std;\n\nint main(){\n  cin.tie(nullptr);\n  ios::sync_with_stdio(false);\n\n\
+    \  int a, b, c, n, q;\n  std::cin >> n >> q;\n  union_find uf(n);\n  for(int i=0;i<q;i++){\n\
+    \    std::cin >> a >> b >> c;\n    if(a==0) uf.unite(b, c);\n    else std::cout\
+    \ << int(uf.same(b, c)) << '\\n';\n  }\n}\n"
+  dependsOn:
+  - union_find/union_find.cpp
   isVerificationFile: true
   path: verify/union_find/union_find.test.cpp
   requiredBy: []
-  timestamp: '2021-03-23 19:56:31+09:00'
+  timestamp: '2021-03-29 03:12:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/union_find/union_find.test.cpp

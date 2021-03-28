@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: 2Dquery/offline_point_add_rectangle_sum.cpp
     title: 2Dquery/offline_point_add_rectangle_sum.cpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/1Dquery/BIT.test.cpp
+    title: verify/1Dquery/BIT.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
     title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
@@ -41,6 +44,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
+  - verify/1Dquery/BIT.test.cpp
 documentation_of: 1Dquery/BIT.cpp
 layout: document
 redirect_from:

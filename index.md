@@ -12,6 +12,11 @@ data:
     - icon: ':warning:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
+  - name: 1Dquery_dynamic
+    pages:
+    - icon: ':warning:'
+      path: 1Dquery_dynamic/BIT.cpp
+      title: 1Dquery_dynamic/BIT.cpp
   - name: 2Dquery
     pages:
     - icon: ':warning:'
@@ -23,9 +28,14 @@ data:
     - icon: ':warning:'
       path: 2Dquery/fractional_cascading_query.cpp
       title: 2Dquery/fractional_cascading_query.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: 2Dquery/offline_point_add_rectangle_sum.cpp
       title: 2Dquery/offline_point_add_rectangle_sum.cpp
+  - name: 2Dquery_static
+    pages:
+    - icon: ':warning:'
+      path: 2Dquery_static/accumulate2D.cpp
+      title: 2Dquery_static/accumulate2D.cpp
   - name: math
     pages:
     - icon: ':warning:'
@@ -46,7 +56,7 @@ data:
     - icon: ':warning:'
       path: union_find/range_union_find.cpp
       title: union_find/range_union_find.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: union_find/union_find.cpp
       title: union_find/union_find.cpp
     - icon: ':warning:'
