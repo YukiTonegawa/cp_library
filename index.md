@@ -26,11 +26,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: 2Dquery/offline_point_add_rectangle_sum.cpp
       title: 2Dquery/offline_point_add_rectangle_sum.cpp
-  - name: 2Dquery_static
-    pages:
-    - icon: ':warning:'
-      path: 2Dquery_static/accumulate2D.cpp
-      title: 2Dquery_static/accumulate2D.cpp
   - name: math
     pages:
     - icon: ':warning:'
