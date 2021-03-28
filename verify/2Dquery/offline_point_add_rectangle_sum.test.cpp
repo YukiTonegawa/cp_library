@@ -3,34 +3,8 @@
 #include <tuple>
 #include <array>
 #include <algorithm>
+#include "../../1Dquery/BIT.cpp"
 #define PROBLEM "https://old.yosupo.jp/problem/point_add_rectangle_sum"
-
-template<typename T = long long>
-struct BIT{
-  int M=1;
-  std::vector<T> sum;
-
-  BIT(){}
-  BIT(int N): M(N+1), sum(M+1, 0){}
-  BIT(const std::vector<T> &v): M(v.size() + 1), sum(1){
-    sum.insert(sum.begin()+1, v.begin(), v.end());
-    for(int i=1;i<=v.size();i++){
-      int nxt = i + (i&(-i));
-      if(nxt<=M) sum[nxt] += sum[i];
-    }
-  }
-  void add(int k, T x){
-    for(int i=k+1;i<=M;i+=(i&(-i))) sum[i] += x;
-  }
-  T getsum(int r){
-    T ret = 0;
-    for(int k=r;k>0;k-=(k&(-k))) ret += sum[k];
-    return ret;
-  }
-  T getsum(int l, int r){
-    return getsum(r) - getsum(l);
-  }
-};
 
 template<typename T = long long, typename Idx = int>
 struct point_add_rectangle_sum{
@@ -39,7 +13,6 @@ struct point_add_rectangle_sum{
   std::vector<std::vector<Idx>> Y;
   std::vector<BIT<T>> BITs;
   using point = std::tuple<Idx, Idx, T>;
-
   point_add_rectangle_sum(){}
   point_add_rectangle_sum(std::vector<point> v){
     int n = v.size();
@@ -47,7 +20,7 @@ struct point_add_rectangle_sum{
     for(int i=0;i<n;i++) X.push_back(std::get<0>(v[i]));
     sort(X.begin(), X.end());
     X.erase(std::unique(X.begin(), X.end()), X.end());
-    M = (int)X.size() + 1;
+    M = (int)X.size();
     std::vector<std::vector<T>> tmp(M+1);
     BITs.resize(M+1);
     Y.resize(M+1);
