@@ -3,9 +3,15 @@ data:
   libraryCategories:
   - name: 1Dquery
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT.cpp
       title: 1Dquery/BIT.cpp
+    - icon: ':warning:'
+      path: 1Dquery/BIT_range_add_range_sum.cpp
+      title: 1Dquery/BIT_range_add_range_sum.cpp
+    - icon: ':warning:'
+      path: 1Dquery/accumulate1D.cpp
+      title: 1Dquery/accumulate1D.cpp
   - name: 1Dquery_dynamic
     pages:
     - icon: ':warning:'
@@ -16,6 +22,12 @@ data:
     - icon: ':warning:'
       path: 2Dquery/accumulate2D.cpp
       title: 2Dquery/accumulate2D.cpp
+    - icon: ':warning:'
+      path: 2Dquery/fractional_cascading_enumerate.cpp
+      title: 2Dquery/fractional_cascading_enumerate.cpp
+    - icon: ':warning:'
+      path: 2Dquery/fractional_cascading_query.cpp
+      title: 2Dquery/fractional_cascading_query.cpp
     - icon: ':warning:'
       path: 2Dquery/offline_point_add_rectangle_sum.cpp
       title: 2Dquery/offline_point_add_rectangle_sum.cpp
