@@ -12,11 +12,6 @@ data:
     - icon: ':warning:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
-  - name: 1Dquery_dynamic
-    pages:
-    - icon: ':warning:'
-      path: 1Dquery_dynamic/BIT.cpp
-      title: 1Dquery_dynamic/BIT.cpp
   - name: 2Dquery
     pages:
     - icon: ':warning:'
