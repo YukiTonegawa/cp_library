@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/1Dquery/BIT_range_add_range_sum.test.cpp
+    title: verify/1Dquery/BIT_range_add_range_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"1Dquery/BIT_range_add_range_sum.cpp\"\n#include <vector>\n\
@@ -42,8 +45,9 @@ data:
   path: 1Dquery/BIT_range_add_range_sum.cpp
   requiredBy: []
   timestamp: '2021-03-29 02:52:35+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/1Dquery/BIT_range_add_range_sum.test.cpp
 documentation_of: 1Dquery/BIT_range_add_range_sum.cpp
 layout: document
 redirect_from:

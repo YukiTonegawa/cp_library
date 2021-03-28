@@ -6,10 +6,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT.cpp
       title: 1Dquery/BIT.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT_range_add_range_sum.cpp
       title: 1Dquery/BIT_range_add_range_sum.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
   - name: 2Dquery
@@ -28,7 +28,7 @@ data:
       title: 2Dquery/offline_point_add_rectangle_sum.cpp
   - name: math
     pages:
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: math/kth_root.cpp
       title: math/kth_root.cpp
   - name: misc
@@ -58,8 +58,17 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/1Dquery/BIT.test.cpp
       title: verify/1Dquery/BIT.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/1Dquery/BIT_range_add_range_sum.test.cpp
+      title: verify/1Dquery/BIT_range_add_range_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/1Dquery/accumulate1D.test.cpp
+      title: verify/1Dquery/accumulate1D.test.cpp
   - name: verify/2Dquery
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/2Dquery/kth_root.test.cpp
+      title: verify/2Dquery/kth_root.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
       title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp

@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/2Dquery/kth_root.test.cpp
+    title: verify/2Dquery/kth_root.test.cpp
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"math/kth_root.cpp\"\n#include <iostream>\n#include <limits>\n\
@@ -52,8 +55,9 @@ data:
   path: math/kth_root.cpp
   requiredBy: []
   timestamp: '2021-03-28 03:35:18+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/2Dquery/kth_root.test.cpp
 documentation_of: math/kth_root.cpp
 layout: document
 redirect_from:
