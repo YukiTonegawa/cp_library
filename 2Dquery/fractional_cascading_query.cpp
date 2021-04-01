@@ -23,8 +23,8 @@ struct fractional_cascading_query{
   };
   node *root;
   void build(node *v, int l, int r){
-    std::vector<Val> value_list(v->list.size());
-    for(int i=0;i<v->list.size();i++) value_list[i] = std::get<2>(p[v->list[i]]);
+    std::vector<Val> value_list(v->info.size());
+    for(int i=0;i<v->info.size();i++) value_list[i] = std::get<2>(p[v->info[i][4]]);
     v->_ds = make_container(value_list);
     if(r-l<2) return;
     int mid = (l+r)/2;
@@ -74,8 +74,8 @@ struct fractional_cascading_query{
     Idx a = x[v->x_range.first], b = x[v->x_range.second-1];
     if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return id();
     if(lx <= a && b < rx) return query1d(v->_ds, ly, ry);
-    return merge(query(v->ch[0], lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),
-             query(v->ch[1], lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2]));
+    return merge(query(v->ch[0], lx, rx, v->info[ly][1], v->info[ry-1][0]),
+             query(v->ch[1], lx, rx, v->info[ly][3], v->info[ry-1][2]));
   }
   Val query(Idx lx, Idx rx, Idx ly, Idx ry){
     int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();

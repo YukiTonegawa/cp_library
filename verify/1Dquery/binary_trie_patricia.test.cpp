@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../../1Dquery/binary_trie_patricia.cpp"
+#define PROBLEM "https://old.yosupo.jp/problem/set_xor_min"
 
 int main(){
   std::cin.tie(nullptr);
