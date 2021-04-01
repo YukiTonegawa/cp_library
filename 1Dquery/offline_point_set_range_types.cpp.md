@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: 1Dquery/BIT.cpp
     title: 1Dquery/BIT.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: 2Dquery/offline_point_add_rectangle_sum.cpp
     title: 2Dquery/offline_point_add_rectangle_sum.cpp
   _extendedRequiredBy: []

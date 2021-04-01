@@ -1,19 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: misc/pseudo_segment_tree.cpp
     title: misc/pseudo_segment_tree.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://yukicoder.me/problems/no/789
+    PROBLEM: https://old.yosupo.jp/problem/point_add_range_sum
     links:
-    - https://yukicoder.me/problems/no/789
+    - https://old.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/misc/pseudo_segment_tree.test.cpp\"\n#include <iostream>\n\
     #include <unordered_map>\n#line 1 \"misc/pseudo_segment_tree.cpp\"\n#include <vector>\n\
     #include <cassert>\n#include <algorithm>\n\ntemplate<typename Idx = int, int bitlen\
@@ -33,30 +33,34 @@ data:
     \  }\n  std::vector<Idx> point_to_index(Idx k){\n    assert(0 <= k && k < N);\n\
     \    k += M - 1;\n    std::vector<Idx> ret{k};\n    while(k){\n      k = (k -\
     \ 1) >> 1;\n      ret.push_back(k);\n    }\n    return ret;\n  }\n};\n#line 4\
-    \ \"verify/misc/pseudo_segment_tree.test.cpp\"\n#define PROBLEM \"https://yukicoder.me/problems/no/789\"\
+    \ \"verify/misc/pseudo_segment_tree.test.cpp\"\n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_range_sum\"\
     \n\nint main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
-    \  int q;std::cin >> q;\n  pseudo_segment_tree segment(1000000001);\n  std::unordered_map<int,\
-    \ long long> sum;\n  long long ans = 0;\n  for(int i=0;i<q;i++){\n    int t, a,\
-    \ b;std::cin >> t >> a >> b;\n    if(t == 0){\n      auto indices = segment.point_to_index(a);\n\
-    \      for(auto idx : indices) sum[idx] += b;\n    }else{\n      auto indices\
-    \ = segment.range_to_index(a, b + 1);\n      for(auto idx : indices) ans += sum[idx];\n\
-    \    }\n  }\n  std::cout << ans << '\\n';\n}\n"
+    \  int n, q;std::cin >> n >> q;\n  std::unordered_map<int, long long> sum;\n \
+    \ pseudo_segment_tree<int> segment(n);\n  for(int i=0;i<n;i++){\n    int x;std::cin\
+    \ >> x;\n    auto indices = segment.point_to_index(i);\n    for(auto index:indices)\
+    \ sum[index] += x;\n  }\n  for(int i=0;i<q;i++){\n    int a, b, c;std::cin >>\
+    \ a >> b >> c;\n    if(a==0){\n      auto indices = segment.point_to_index(b);\n\
+    \      for(auto index:indices) sum[index] += c;\n    }else{\n      long long ans\
+    \ = 0;\n      auto indices = segment.range_to_index(b, c);\n      for(auto index:indices)\
+    \ ans += sum[index];\n      std::cout << ans << '\\n';\n    }\n  }\n}\n"
   code: "#include <iostream>\n#include <unordered_map>\n#include \"../../misc/pseudo_segment_tree.cpp\"\
-    \n#define PROBLEM \"https://yukicoder.me/problems/no/789\"\n\nint main(){\n  std::cin.tie(nullptr);\n\
-    \  std::ios::sync_with_stdio(false);\n  int q;std::cin >> q;\n  pseudo_segment_tree\
-    \ segment(1000000001);\n  std::unordered_map<int, long long> sum;\n  long long\
-    \ ans = 0;\n  for(int i=0;i<q;i++){\n    int t, a, b;std::cin >> t >> a >> b;\n\
-    \    if(t == 0){\n      auto indices = segment.point_to_index(a);\n      for(auto\
-    \ idx : indices) sum[idx] += b;\n    }else{\n      auto indices = segment.range_to_index(a,\
-    \ b + 1);\n      for(auto idx : indices) ans += sum[idx];\n    }\n  }\n  std::cout\
-    \ << ans << '\\n';\n}\n"
+    \n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_range_sum\"\n\nint\
+    \ main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n  int\
+    \ n, q;std::cin >> n >> q;\n  std::unordered_map<int, long long> sum;\n  pseudo_segment_tree<int>\
+    \ segment(n);\n  for(int i=0;i<n;i++){\n    int x;std::cin >> x;\n    auto indices\
+    \ = segment.point_to_index(i);\n    for(auto index:indices) sum[index] += x;\n\
+    \  }\n  for(int i=0;i<q;i++){\n    int a, b, c;std::cin >> a >> b >> c;\n    if(a==0){\n\
+    \      auto indices = segment.point_to_index(b);\n      for(auto index:indices)\
+    \ sum[index] += c;\n    }else{\n      long long ans = 0;\n      auto indices =\
+    \ segment.range_to_index(b, c);\n      for(auto index:indices) ans += sum[index];\n\
+    \      std::cout << ans << '\\n';\n    }\n  }\n}\n"
   dependsOn:
   - misc/pseudo_segment_tree.cpp
   isVerificationFile: true
   path: verify/misc/pseudo_segment_tree.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 22:47:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/misc/pseudo_segment_tree.test.cpp
 layout: document

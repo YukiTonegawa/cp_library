@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: 1Dquery/BIT.cpp
     title: 1Dquery/BIT.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: 2Dquery/offline_point_add_rectangle_sum.cpp
     title: 2Dquery/offline_point_add_rectangle_sum.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://old.yosupo.jp/problem/point_add_rectangle_sum
@@ -62,7 +62,7 @@ data:
     \ ret);\n    return ret;\n  }\n};\n#line 3 \"verify/2Dquery/offline_point_add_rectangle_sum.test.cpp\"\
     \n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_rectangle_sum\"\n\n\
     int main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n \
-    \ int n, q;\n  std::cin >> n >> q;\n  point_add_rectangle_sum<int, long long>\
+    \ int n, q;\n  std::cin >> n >> q;\n  point_add_rectangle_sum<long long, int>\
     \ rect;\n  for(int i=0;i<n;i++){\n    int a, b, c;\n    std::cin >> a >> b >>\
     \ c;\n    rect.add_point(a, b, c);\n  }\n  for(int i=0;i<q;i++){\n    int a, b,\
     \ c, d, e;\n    std::cin >> a >> b >> c >> d;\n    if(a==0) rect.add_point(b,\
@@ -72,7 +72,7 @@ data:
   code: "#include <iostream>\n#include \"../../2Dquery/offline_point_add_rectangle_sum.cpp\"\
     \n#define PROBLEM \"https://old.yosupo.jp/problem/point_add_rectangle_sum\"\n\n\
     int main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n \
-    \ int n, q;\n  std::cin >> n >> q;\n  point_add_rectangle_sum<int, long long>\
+    \ int n, q;\n  std::cin >> n >> q;\n  point_add_rectangle_sum<long long, int>\
     \ rect;\n  for(int i=0;i<n;i++){\n    int a, b, c;\n    std::cin >> a >> b >>\
     \ c;\n    rect.add_point(a, b, c);\n  }\n  for(int i=0;i<q;i++){\n    int a, b,\
     \ c, d, e;\n    std::cin >> a >> b >> c >> d;\n    if(a==0) rect.add_point(b,\
@@ -85,8 +85,8 @@ data:
   isVerificationFile: true
   path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 22:47:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
 layout: document

@@ -1,14 +1,14 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: 1Dquery/accumulate1D.cpp
     title: 1Dquery/accumulate1D.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://old.yosupo.jp/problem/static_range_sum
@@ -24,20 +24,20 @@ data:
     \  int n, q;scanf(\"%d %d\", &n, &q);\n  std::vector<long long> v(n);\n  for(int\
     \ i=0;i<n;i++) scanf(\"%lld\", &v[i]);\n  accumulate1D<long long> ac(v);\n  for(int\
     \ i=0;i<q;i++){\n    int l, r;scanf(\"%d %d\", &l, &r);\n    printf(\"%lld\\n\"\
-    , ac.query(l, r));\n  }\n}\n"
+    , ac.getsum(l, r));\n  }\n}\n"
   code: "#include <vector>\n#include <cstdio>\n#include \"../../1Dquery/accumulate1D.cpp\"\
     \n#define PROBLEM \"https://old.yosupo.jp/problem/static_range_sum\"\n\nint main(){\n\
     \  int n, q;scanf(\"%d %d\", &n, &q);\n  std::vector<long long> v(n);\n  for(int\
     \ i=0;i<n;i++) scanf(\"%lld\", &v[i]);\n  accumulate1D<long long> ac(v);\n  for(int\
     \ i=0;i<q;i++){\n    int l, r;scanf(\"%d %d\", &l, &r);\n    printf(\"%lld\\n\"\
-    , ac.query(l, r));\n  }\n}\n"
+    , ac.getsum(l, r));\n  }\n}\n"
   dependsOn:
   - 1Dquery/accumulate1D.cpp
   isVerificationFile: true
   path: verify/1Dquery/accumulate1D.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 22:47:51+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/1Dquery/accumulate1D.test.cpp
 layout: document

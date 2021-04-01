@@ -3,13 +3,13 @@ data:
   libraryCategories:
   - name: 1Dquery
     pages:
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT.cpp
       title: 1Dquery/BIT.cpp
     - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT_range_add_range_sum.cpp
       title: 1Dquery/BIT_range_add_range_sum.cpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
     - icon: ':warning:'
@@ -29,7 +29,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: 2Dquery/fractional_cascading_query.cpp
       title: 2Dquery/fractional_cascading_query.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: 2Dquery/offline_point_add_rectangle_sum.cpp
       title: 2Dquery/offline_point_add_rectangle_sum.cpp
     - icon: ':heavy_check_mark:'
@@ -42,7 +42,7 @@ data:
       title: math/kth_root.cpp
   - name: misc
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: misc/pseudo_segment_tree.cpp
       title: misc/pseudo_segment_tree.cpp
     - icon: ':warning:'
@@ -73,7 +73,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/1Dquery/BIT_range_add_range_sum.test.cpp
       title: verify/1Dquery/BIT_range_add_range_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/1Dquery/accumulate1D.test.cpp
       title: verify/1Dquery/accumulate1D.test.cpp
   - name: verify/2Dquery
@@ -84,7 +84,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/2Dquery/kth_root.test.cpp
       title: verify/2Dquery/kth_root.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
       title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
@@ -92,7 +92,7 @@ data:
       title: verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
   - name: verify/misc
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/misc/pseudo_segment_tree.test.cpp
       title: verify/misc/pseudo_segment_tree.test.cpp
   - name: verify/union_find
