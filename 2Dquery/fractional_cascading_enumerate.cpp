@@ -13,8 +13,7 @@ private:
   struct node{
     std::pair<int, int> x_range;
     node *ch[2];
-    std::vector<int> list;
-    std::vector<std::array<int, 4>> next_idx;
+    std::vector<std::array<int, 5>> info;
     node(){ch[0] = ch[1] = nullptr;}
   };
   node *root;
@@ -27,14 +26,19 @@ private:
     v->ch[0]->x_range = std::make_pair(l, mid);
     v->ch[1]->x_range = std::make_pair(mid, r);
     int lsz = 0, rsz = 0;
-    for(int p_idx:v->list){
+    for(int i=0;i<v->info.size();i++){
+      int p_idx = v->info[i][4];
       if(std::get<0>(p[p_idx]) < split_x){
-        v->next_idx.push_back(std::array<int, 4>{lsz+1, lsz, rsz, rsz});
-        v->ch[0]->list.push_back(p_idx);
+        v->info[i][0] = lsz + 1;
+        v->info[i][1] = lsz;
+        v->info[i][2] = v->info[i][3] = rsz;
+        v->ch[0]->info.push_back({-1, -1, -1, -1, p_idx});
         lsz++;
       }else{
-        v->next_idx.push_back(std::array<int, 4>{lsz, lsz, rsz+1, rsz});
-        v->ch[1]->list.push_back(p_idx);
+        v->info[i][0] = v->info[i][1] = lsz;
+        v->info[i][2] = rsz + 1;
+        v->info[i][3] = rsz;
+        v->ch[1]->info.push_back({-1, -1, -1, -1, p_idx});
         rsz++;
       }
     }
@@ -54,8 +58,8 @@ public:
     }
     std::sort(x.begin(), x.end());
     x.erase(std::unique(x.begin(), x.end()), x.end());
-    root->list.resize(p.size());
-    std::iota(root->list.begin(), root->list.end(), 0);
+    root->info.resize(p.size());
+    for(int i=0;i<p.size();i++) root->info[i] = {-1, -1, -1, -1, i};
     root->x_range = std::make_pair(0, x.size());
     build(root, 0, x.size());
   }
@@ -66,11 +70,11 @@ public:
     Idx a = x[v->x_range.first], b = x[v->x_range.second-1];
     if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return;
     if(lx <= a && b < rx){
-      for(int i=ly;i<ry;i++) ret.push_back(p[v->list[i]]);
+      for(int i=ly;i<ry;i++) ret.push_back(p[v->info[i][4]]);
       return;
     }
-    query(v->ch[0], lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0], ret);
-    query(v->ch[1], lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2], ret);
+    query(v->ch[0], lx, rx, v->info[ly][1], v->info[ry-1][0], ret);
+    query(v->ch[1], lx, rx, v->info[ly][3], v->info[ry-1][2], ret);
   }
   std::vector<point> query(Idx lx, Idx rx, Idx ly, Idx ry){
     int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();
