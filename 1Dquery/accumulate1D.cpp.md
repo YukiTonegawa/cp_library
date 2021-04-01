@@ -6,12 +6,12 @@ data:
   - icon: ':x:'
     path: verify/1Dquery/accumulate1D.test.cpp
     title: verify/1Dquery/accumulate1D.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/2Dquery/fractional_cascading_query.test.cpp
     title: verify/2Dquery/fractional_cascading_query.test.cpp
   _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"1Dquery/accumulate1D.cpp\"\n#include <vector>\n\ntemplate<typename\
@@ -29,7 +29,7 @@ data:
   path: 1Dquery/accumulate1D.cpp
   requiredBy: []
   timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/1Dquery/accumulate1D.test.cpp
   - verify/2Dquery/fractional_cascading_query.test.cpp

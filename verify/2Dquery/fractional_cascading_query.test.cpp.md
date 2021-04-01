@@ -1,20 +1,22 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: 1Dquery/accumulate1D.cpp
     title: 1Dquery/accumulate1D.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: 2Dquery/fractional_cascading_query.cpp
     title: 2Dquery/fractional_cascading_query.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
+    PROBLEM: https://old.yosupo.jp/problem/rectangle_sum
+    links:
+    - https://old.yosupo.jp/problem/rectangle_sum
   bundledCode: "#line 1 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n#include\
     \ <vector>\n#include <tuple>\n#include <algorithm>\n#include <numeric>\n#include\
     \ <array>\n#line 2 \"1Dquery/accumulate1D.cpp\"\n\ntemplate<typename T>\nstruct\
@@ -55,10 +57,11 @@ data:
     \ Idx rx, Idx ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
     \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
     \ - y.begin();\n    return query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n#line\
-    \ 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n\nusing _val = long\
-    \ long;\nusing _idx = int;\nusing _container = accumulate1D<_val>;\n_val _id(){return\
-    \ 0;}\n_val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container &a,\
-    \ int b, int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
+    \ 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n#define PROBLEM \"\
+    https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val = long long;\nusing\
+    \ _idx = int;\nusing _container = accumulate1D<_val>;\n_val _id(){return 0;}\n\
+    _val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container &a, int b,\
+    \ int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
     \ &v){return _container(v);}\nusing rect_sum = fractional_cascading_query<_val,\
     \ _idx, _container, _id, _merge, _query1d, _make_container>;\n\n#include <iostream>\n\
     int main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n \
@@ -70,8 +73,9 @@ data:
     \  }\n}\n"
   code: "#include <vector>\n#include <tuple>\n#include <algorithm>\n#include <numeric>\n\
     #include <array>\n#include \"../../1Dquery/accumulate1D.cpp\"\n#include \"../../2Dquery/fractional_cascading_query.cpp\"\
-    \n\nusing _val = long long;\nusing _idx = int;\nusing _container = accumulate1D<_val>;\n\
-    _val _id(){return 0;}\n_val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container\
+    \n#define PROBLEM \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val\
+    \ = long long;\nusing _idx = int;\nusing _container = accumulate1D<_val>;\n_val\
+    \ _id(){return 0;}\n_val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container\
     \ &a, int b, int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
     \ &v){return _container(v);}\nusing rect_sum = fractional_cascading_query<_val,\
     \ _idx, _container, _id, _merge, _query1d, _make_container>;\n\n#include <iostream>\n\
@@ -88,8 +92,8 @@ data:
   isVerificationFile: true
   path: verify/2Dquery/fractional_cascading_query.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 22:01:13+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2Dquery/fractional_cascading_query.test.cpp
 layout: document

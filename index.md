@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT_range_add_range_sum.cpp
       title: 1Dquery/BIT_range_add_range_sum.cpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
     - icon: ':warning:'
@@ -26,7 +26,7 @@ data:
     - icon: ':warning:'
       path: 2Dquery/fractional_cascading_enumerate.cpp
       title: 2Dquery/fractional_cascading_enumerate.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: 2Dquery/fractional_cascading_query.cpp
       title: 2Dquery/fractional_cascading_query.cpp
     - icon: ':x:'
@@ -78,7 +78,7 @@ data:
       title: verify/1Dquery/accumulate1D.test.cpp
   - name: verify/2Dquery
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/2Dquery/fractional_cascading_query.test.cpp
       title: verify/2Dquery/fractional_cascading_query.test.cpp
     - icon: ':heavy_check_mark:'
