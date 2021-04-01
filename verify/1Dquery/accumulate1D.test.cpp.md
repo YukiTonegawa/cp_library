@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: 1Dquery/accumulate1D.cpp
     title: 1Dquery/accumulate1D.cpp
   _extendedRequiredBy: []

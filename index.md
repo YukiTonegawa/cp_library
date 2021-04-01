@@ -9,10 +9,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: 1Dquery/BIT_range_add_range_sum.cpp
       title: 1Dquery/BIT_range_add_range_sum.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: 1Dquery/accumulate1D.cpp
       title: 1Dquery/accumulate1D.cpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: 1Dquery/binary_trie_patricia.cpp
       title: 1Dquery/binary_trie_patricia.cpp
     - icon: ':warning:'
@@ -23,10 +23,10 @@ data:
     - icon: ':warning:'
       path: 2Dquery/accumulate2D.cpp
       title: 2Dquery/accumulate2D.cpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: 2Dquery/fractional_cascading_enumerate.cpp
       title: 2Dquery/fractional_cascading_enumerate.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: 2Dquery/fractional_cascading_query.cpp
       title: 2Dquery/fractional_cascading_query.cpp
     - icon: ':heavy_check_mark:'
@@ -76,9 +76,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/1Dquery/accumulate1D.test.cpp
       title: verify/1Dquery/accumulate1D.test.cpp
+    - icon: ':x:'
+      path: verify/1Dquery/binary_trie_patricia.test.cpp
+      title: verify/1Dquery/binary_trie_patricia.test.cpp
   - name: verify/2Dquery
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/2Dquery/fractional_cascading_enumerate.test.cpp
+      title: verify/2Dquery/fractional_cascading_enumerate.test.cpp
+    - icon: ':x:'
       path: verify/2Dquery/fractional_cascading_query.test.cpp
       title: verify/2Dquery/fractional_cascading_query.test.cpp
     - icon: ':heavy_check_mark:'

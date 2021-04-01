@@ -2,10 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/1Dquery/binary_trie_patricia.test.cpp
+    title: verify/1Dquery/binary_trie_patricia.test.cpp
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"1Dquery/binary_trie_patricia.cpp\"\n#include <cassert>\n\
@@ -112,8 +115,9 @@ data:
   path: 1Dquery/binary_trie_patricia.cpp
   requiredBy: []
   timestamp: '2021-04-01 21:41:27+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/1Dquery/binary_trie_patricia.test.cpp
 documentation_of: 1Dquery/binary_trie_patricia.cpp
 layout: document
 redirect_from:
