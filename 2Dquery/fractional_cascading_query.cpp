@@ -3,16 +3,15 @@
 #include <algorithm>
 #include <numeric>
 #include <array>
-#include "../1Dquery/accumulate1D.cpp"
 
-template<typename T, typename Idx = int>
+template<typename Val, typename Idx, typename Container,
+  Val (*id)(),
+  Val (*merge)(Val, Val),
+  Val (*query1d)(Container&, int, int),
+  Container (*make_container)(std::vector<Val>&)
+>
 struct fractional_cascading_query{
-  using point = std::tuple<Idx, Idx, T>;
-
-  using ds = accumulate1D<T>;
-  T z = 0;
-  const std::function<T(T, T)> f = [](T a, T b){return a + b;};
-  
+  using point = std::tuple<Idx, Idx, Val>;
   std::vector<Idx> x, y;
   std::vector<point> p;
   struct node{
@@ -20,14 +19,14 @@ struct fractional_cascading_query{
     node *ch[2];
     std::vector<int> list;
     std::vector<std::array<int, 4>> next_idx;
-    ds _ds;
+    Container _ds;
     node(){ch[0] = ch[1] = nullptr;}
   };
   node *root;
   void build(node *v, int l, int r){
-    std::vector<T> value_list(v->list.size());
+    std::vector<Val> value_list(v->list.size());
     for(int i=0;i<v->list.size();i++) value_list[i] = std::get<2>(p[v->list[i]]);
-    v->_ds = ds(value_list);
+    v->_ds = make_container(value_list);
     if(r-l<2) return;
     int mid = (l+r)/2;
     Idx split_x = x[mid];
@@ -67,14 +66,14 @@ struct fractional_cascading_query{
     root->x_range = std::make_pair(0, x.size());
     build(root, 0, x.size());
   }
-  T query(node *v, Idx lx, Idx rx, int ly, int ry){
+  Val query(node *v, Idx lx, Idx rx, int ly, int ry){
     Idx a = x[v->x_range.first], b = x[v->x_range.second-1];
-    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return z;
-    if(lx <= a && b < rx) return v->_ds.query(ly, ry);
-    return f(query(v->ch[0], lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),
+    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return id();
+    if(lx <= a && b < rx) return query1d(v->_ds, ly, ry);
+    return merge(query(v->ch[0], lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),
              query(v->ch[1], lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2]));
   }
-  T query(Idx lx, Idx rx, Idx ly, Idx ry){
+  Val query(Idx lx, Idx rx, Idx ly, Idx ry){
     int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();
     int ry_idx = std::lower_bound(y.begin(), y.end(), ry) - y.begin();
     return query(root, lx, rx, ly_idx, ry_idx);

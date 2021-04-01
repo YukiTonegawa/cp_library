@@ -24,7 +24,7 @@ struct accumulate2D{
       }
     }
   }
-  T query(int lx, int rx, int ly, int ry){
+  T getsum(int lx, int rx, int ly, int ry){
     lx = std::max(0, lx);
     rx = std::min(n, rx);
     ly = std::max(0, ly);
