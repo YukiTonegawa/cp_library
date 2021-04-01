@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/2Dquery/fractional_cascading_query.test.cpp
     title: verify/2Dquery/fractional_cascading_query.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"2Dquery/fractional_cascading_query.cpp\"\n#include <vector>\n\
@@ -20,8 +20,8 @@ data:
     \ p;\n  struct node{\n    std::pair<int, int> x_range;\n    node *ch[2];\n   \
     \ std::vector<std::array<int, 5>> info;\n    Container _ds;\n    node(){ch[0]\
     \ = ch[1] = nullptr;}\n  };\n  node *root;\n  void build(node *v, int l, int r){\n\
-    \    std::vector<Val> value_list(v->list.size());\n    for(int i=0;i<v->list.size();i++)\
-    \ value_list[i] = std::get<2>(p[v->list[i]]);\n    v->_ds = make_container(value_list);\n\
+    \    std::vector<Val> value_list(v->info.size());\n    for(int i=0;i<v->info.size();i++)\
+    \ value_list[i] = std::get<2>(p[v->info[i][4]]);\n    v->_ds = make_container(value_list);\n\
     \    if(r-l<2) return;\n    int mid = (l+r)/2;\n    Idx split_x = x[mid];\n  \
     \  v->ch[0] = new node();\n    v->ch[1] = new node();\n    v->ch[0]->x_range =\
     \ std::make_pair(l, mid);\n    v->ch[1]->x_range = std::make_pair(mid, r);\n \
@@ -43,11 +43,11 @@ data:
     \ *v, Idx lx, Idx rx, int ly, int ry){\n    Idx a = x[v->x_range.first], b = x[v->x_range.second-1];\n\
     \    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return id();\n    if(lx\
     \ <= a && b < rx) return query1d(v->_ds, ly, ry);\n    return merge(query(v->ch[0],\
-    \ lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),\n             query(v->ch[1],\
-    \ lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2]));\n  }\n  Val query(Idx lx,\
-    \ Idx rx, Idx ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
-    \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
-    \ - y.begin();\n    return query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n"
+    \ lx, rx, v->info[ly][1], v->info[ry-1][0]),\n             query(v->ch[1], lx,\
+    \ rx, v->info[ly][3], v->info[ry-1][2]));\n  }\n  Val query(Idx lx, Idx rx, Idx\
+    \ ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();\n\
+    \    int ry_idx = std::lower_bound(y.begin(), y.end(), ry) - y.begin();\n    return\
+    \ query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n"
   code: "#include <vector>\n#include <tuple>\n#include <algorithm>\n#include <numeric>\n\
     #include <array>\n\ntemplate<typename Val, typename Idx, typename Container,\n\
     \  Val (*id)(),\n  Val (*merge)(Val, Val),\n  Val (*query1d)(Container&, int,\
@@ -56,8 +56,8 @@ data:
     \ p;\n  struct node{\n    std::pair<int, int> x_range;\n    node *ch[2];\n   \
     \ std::vector<std::array<int, 5>> info;\n    Container _ds;\n    node(){ch[0]\
     \ = ch[1] = nullptr;}\n  };\n  node *root;\n  void build(node *v, int l, int r){\n\
-    \    std::vector<Val> value_list(v->list.size());\n    for(int i=0;i<v->list.size();i++)\
-    \ value_list[i] = std::get<2>(p[v->list[i]]);\n    v->_ds = make_container(value_list);\n\
+    \    std::vector<Val> value_list(v->info.size());\n    for(int i=0;i<v->info.size();i++)\
+    \ value_list[i] = std::get<2>(p[v->info[i][4]]);\n    v->_ds = make_container(value_list);\n\
     \    if(r-l<2) return;\n    int mid = (l+r)/2;\n    Idx split_x = x[mid];\n  \
     \  v->ch[0] = new node();\n    v->ch[1] = new node();\n    v->ch[0]->x_range =\
     \ std::make_pair(l, mid);\n    v->ch[1]->x_range = std::make_pair(mid, r);\n \
@@ -79,17 +79,17 @@ data:
     \ *v, Idx lx, Idx rx, int ly, int ry){\n    Idx a = x[v->x_range.first], b = x[v->x_range.second-1];\n\
     \    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return id();\n    if(lx\
     \ <= a && b < rx) return query1d(v->_ds, ly, ry);\n    return merge(query(v->ch[0],\
-    \ lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),\n             query(v->ch[1],\
-    \ lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2]));\n  }\n  Val query(Idx lx,\
-    \ Idx rx, Idx ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
-    \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
-    \ - y.begin();\n    return query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n"
+    \ lx, rx, v->info[ly][1], v->info[ry-1][0]),\n             query(v->ch[1], lx,\
+    \ rx, v->info[ly][3], v->info[ry-1][2]));\n  }\n  Val query(Idx lx, Idx rx, Idx\
+    \ ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();\n\
+    \    int ry_idx = std::lower_bound(y.begin(), y.end(), ry) - y.begin();\n    return\
+    \ query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n"
   dependsOn: []
   isVerificationFile: false
   path: 2Dquery/fractional_cascading_query.cpp
   requiredBy: []
-  timestamp: '2021-04-01 23:41:40+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2021-04-01 23:58:08+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/2Dquery/fractional_cascading_query.test.cpp
 documentation_of: 2Dquery/fractional_cascading_query.cpp

@@ -1,17 +1,19 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: 1Dquery/binary_trie_patricia.cpp
     title: 1Dquery/binary_trie_patricia.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
+    PROBLEM: https://old.yosupo.jp/problem/set_xor_min
+    links:
+    - https://old.yosupo.jp/problem/set_xor_min
   bundledCode: "#line 1 \"verify/1Dquery/binary_trie_patricia.test.cpp\"\n#include\
     \ <iostream>\n#line 1 \"1Dquery/binary_trie_patricia.cpp\"\n#include <cassert>\n\
     #include <cstdint>\n#include <algorithm>\n#include <vector>\n\ntemplate<typename\
@@ -63,25 +65,26 @@ data:
     \ next_bit(v, kx));\n        if(diff_bit != nodes[v].l - 1){\n          ret +=\
     \ ((k >> diff_bit) & 1 ? size(v) : 0);\n          return ret;\n        }\n   \
     \     bit = nodes[v].l - 1;\n      }\n    }\n    return ret;\n  }\n};\n#line 3\
-    \ \"verify/1Dquery/binary_trie_patricia.test.cpp\"\n\nint main(){\n  std::cin.tie(nullptr);\n\
-    \  std::ios::sync_with_stdio(false);\n  int q;\n  std::cin >> q;\n  binary_trie\
-    \ t;\n  for(int i=0;i<q;i++){\n    int a, b;\n    std::cin >> a >> b;\n    if(a==0){\n\
-    \      t.insert(b);\n    }else if(a==1){\n      t.erase(b);\n    }else{\n    \
-    \  t.xor_all(b);\n      std::cout << t.kth_element(0) << '\\n';\n      t.xor_all(b);\n\
-    \    }\n  }\n}\n"
-  code: "#include <iostream>\n#include \"../../1Dquery/binary_trie_patricia.cpp\"\n\
-    \nint main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
+    \ \"verify/1Dquery/binary_trie_patricia.test.cpp\"\n#define PROBLEM \"https://old.yosupo.jp/problem/set_xor_min\"\
+    \n\nint main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n\
     \  int q;\n  std::cin >> q;\n  binary_trie t;\n  for(int i=0;i<q;i++){\n    int\
     \ a, b;\n    std::cin >> a >> b;\n    if(a==0){\n      t.insert(b);\n    }else\
     \ if(a==1){\n      t.erase(b);\n    }else{\n      t.xor_all(b);\n      std::cout\
     \ << t.kth_element(0) << '\\n';\n      t.xor_all(b);\n    }\n  }\n}\n"
+  code: "#include <iostream>\n#include \"../../1Dquery/binary_trie_patricia.cpp\"\n\
+    #define PROBLEM \"https://old.yosupo.jp/problem/set_xor_min\"\n\nint main(){\n\
+    \  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n  int q;\n  std::cin\
+    \ >> q;\n  binary_trie t;\n  for(int i=0;i<q;i++){\n    int a, b;\n    std::cin\
+    \ >> a >> b;\n    if(a==0){\n      t.insert(b);\n    }else if(a==1){\n      t.erase(b);\n\
+    \    }else{\n      t.xor_all(b);\n      std::cout << t.kth_element(0) << '\\n';\n\
+    \      t.xor_all(b);\n    }\n  }\n}\n"
   dependsOn:
   - 1Dquery/binary_trie_patricia.cpp
   isVerificationFile: true
   path: verify/1Dquery/binary_trie_patricia.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 23:41:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 23:58:08+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/1Dquery/binary_trie_patricia.test.cpp
 layout: document

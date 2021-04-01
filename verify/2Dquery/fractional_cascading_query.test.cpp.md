@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: 1Dquery/accumulate1D.cpp
     title: 1Dquery/accumulate1D.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: 2Dquery/fractional_cascading_query.cpp
     title: 2Dquery/fractional_cascading_query.cpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://old.yosupo.jp/problem/rectangle_sum
@@ -31,8 +31,8 @@ data:
     \ p;\n  struct node{\n    std::pair<int, int> x_range;\n    node *ch[2];\n   \
     \ std::vector<std::array<int, 5>> info;\n    Container _ds;\n    node(){ch[0]\
     \ = ch[1] = nullptr;}\n  };\n  node *root;\n  void build(node *v, int l, int r){\n\
-    \    std::vector<Val> value_list(v->list.size());\n    for(int i=0;i<v->list.size();i++)\
-    \ value_list[i] = std::get<2>(p[v->list[i]]);\n    v->_ds = make_container(value_list);\n\
+    \    std::vector<Val> value_list(v->info.size());\n    for(int i=0;i<v->info.size();i++)\
+    \ value_list[i] = std::get<2>(p[v->info[i][4]]);\n    v->_ds = make_container(value_list);\n\
     \    if(r-l<2) return;\n    int mid = (l+r)/2;\n    Idx split_x = x[mid];\n  \
     \  v->ch[0] = new node();\n    v->ch[1] = new node();\n    v->ch[0]->x_range =\
     \ std::make_pair(l, mid);\n    v->ch[1]->x_range = std::make_pair(mid, r);\n \
@@ -54,16 +54,15 @@ data:
     \ *v, Idx lx, Idx rx, int ly, int ry){\n    Idx a = x[v->x_range.first], b = x[v->x_range.second-1];\n\
     \    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return id();\n    if(lx\
     \ <= a && b < rx) return query1d(v->_ds, ly, ry);\n    return merge(query(v->ch[0],\
-    \ lx, rx, v->next_idx[ly][1], v->next_idx[ry-1][0]),\n             query(v->ch[1],\
-    \ lx, rx, v->next_idx[ly][3], v->next_idx[ry-1][2]));\n  }\n  Val query(Idx lx,\
-    \ Idx rx, Idx ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
-    \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
-    \ - y.begin();\n    return query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n#line\
-    \ 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n\n#define PROBLEM\
-    \ \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val = long long;\n\
-    using _idx = int;\nusing _container = accumulate1D<_val>;\n_val _id(){return 0;}\n\
-    _val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container &a, int b,\
-    \ int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
+    \ lx, rx, v->info[ly][1], v->info[ry-1][0]),\n             query(v->ch[1], lx,\
+    \ rx, v->info[ly][3], v->info[ry-1][2]));\n  }\n  Val query(Idx lx, Idx rx, Idx\
+    \ ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();\n\
+    \    int ry_idx = std::lower_bound(y.begin(), y.end(), ry) - y.begin();\n    return\
+    \ query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n#line 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\
+    \n\n#define PROBLEM \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val\
+    \ = long long;\nusing _idx = int;\nusing _container = accumulate1D<_val>;\n_val\
+    \ _id(){return 0;}\n_val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container\
+    \ &a, int b, int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
     \ &v){return _container(v);}\nusing rect_sum = fractional_cascading_query<_val,\
     \ _idx, _container, _id, _merge, _query1d, _make_container>;\n\n#include <iostream>\n\
     int main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n \
@@ -94,8 +93,8 @@ data:
   isVerificationFile: true
   path: verify/2Dquery/fractional_cascading_query.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 23:41:40+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2021-04-01 23:58:08+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2Dquery/fractional_cascading_query.test.cpp
 layout: document
