@@ -5,6 +5,7 @@
 #include <array>
 #include "../../1Dquery/accumulate1D.cpp"
 #include "../../2Dquery/fractional_cascading_query.cpp"
+
 #define PROBLEM "https://old.yosupo.jp/problem/rectangle_sum"
 
 using _val = long long;
