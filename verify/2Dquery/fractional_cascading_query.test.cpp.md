@@ -57,9 +57,9 @@ data:
     \ Idx rx, Idx ly, Idx ry){\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
     \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
     \ - y.begin();\n    return query(root, lx, rx, ly_idx, ry_idx);\n  }\n};\n#line\
-    \ 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n#define PROBLEM \"\
-    https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val = long long;\nusing\
-    \ _idx = int;\nusing _container = accumulate1D<_val>;\n_val _id(){return 0;}\n\
+    \ 8 \"verify/2Dquery/fractional_cascading_query.test.cpp\"\n\n#define PROBLEM\
+    \ \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val = long long;\n\
+    using _idx = int;\nusing _container = accumulate1D<_val>;\n_val _id(){return 0;}\n\
     _val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container &a, int b,\
     \ int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
     \ &v){return _container(v);}\nusing rect_sum = fractional_cascading_query<_val,\
@@ -73,7 +73,7 @@ data:
     \  }\n}\n"
   code: "#include <vector>\n#include <tuple>\n#include <algorithm>\n#include <numeric>\n\
     #include <array>\n#include \"../../1Dquery/accumulate1D.cpp\"\n#include \"../../2Dquery/fractional_cascading_query.cpp\"\
-    \n#define PROBLEM \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val\
+    \n\n#define PROBLEM \"https://old.yosupo.jp/problem/rectangle_sum\"\n\nusing _val\
     \ = long long;\nusing _idx = int;\nusing _container = accumulate1D<_val>;\n_val\
     \ _id(){return 0;}\n_val _merge(_val a, _val b){return a + b;}\n_val _query1d(_container\
     \ &a, int b, int c){return a.getsum(b, c);}\n_container _make_container(std::vector<_val>\
@@ -92,7 +92,7 @@ data:
   isVerificationFile: true
   path: verify/2Dquery/fractional_cascading_query.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 22:01:13+09:00'
+  timestamp: '2021-04-01 22:19:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2Dquery/fractional_cascading_query.test.cpp
