@@ -10,6 +10,6 @@ int main(){
   accumulate1D<long long> ac(v);
   for(int i=0;i<q;i++){
     int l, r;scanf("%d %d", &l, &r);
-    printf("%lld\n", ac.query(l, r));
+    printf("%lld\n", ac.getsum(l, r));
   }
 }

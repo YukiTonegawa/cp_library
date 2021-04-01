@@ -7,7 +7,7 @@ int main(){
   std::ios::sync_with_stdio(false);
   int n, q;
   std::cin >> n >> q;
-  point_add_rectangle_sum<int, long long> rect;
+  point_add_rectangle_sum<long long, int> rect;
   for(int i=0;i<n;i++){
     int a, b, c;
     std::cin >> a >> b >> c;

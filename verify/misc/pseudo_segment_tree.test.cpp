@@ -1,24 +1,29 @@
 #include <iostream>
 #include <unordered_map>
 #include "../../misc/pseudo_segment_tree.cpp"
-#define PROBLEM "https://yukicoder.me/problems/no/789"
+#define PROBLEM "https://old.yosupo.jp/problem/point_add_range_sum"
 
 int main(){
   std::cin.tie(nullptr);
   std::ios::sync_with_stdio(false);
-  int q;std::cin >> q;
-  pseudo_segment_tree segment(1000000001);
+  int n, q;std::cin >> n >> q;
   std::unordered_map<int, long long> sum;
-  long long ans = 0;
+  pseudo_segment_tree<int> segment(n);
+  for(int i=0;i<n;i++){
+    int x;std::cin >> x;
+    auto indices = segment.point_to_index(i);
+    for(auto index:indices) sum[index] += x;
+  }
   for(int i=0;i<q;i++){
-    int t, a, b;std::cin >> t >> a >> b;
-    if(t == 0){
-      auto indices = segment.point_to_index(a);
-      for(auto idx : indices) sum[idx] += b;
+    int a, b, c;std::cin >> a >> b >> c;
+    if(a==0){
+      auto indices = segment.point_to_index(b);
+      for(auto index:indices) sum[index] += c;
     }else{
-      auto indices = segment.range_to_index(a, b + 1);
-      for(auto idx : indices) ans += sum[idx];
+      long long ans = 0;
+      auto indices = segment.range_to_index(b, c);
+      for(auto index:indices) ans += sum[index];
+      std::cout << ans << '\n';
     }
   }
-  std::cout << ans << '\n';
 }
