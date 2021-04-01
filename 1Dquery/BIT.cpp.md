@@ -2,19 +2,28 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
+    path: 1Dquery/offline_point_set_range_types.cpp
+    title: 1Dquery/offline_point_set_range_types.cpp
+  - icon: ':x:'
     path: 2Dquery/offline_point_add_rectangle_sum.cpp
     title: 2Dquery/offline_point_add_rectangle_sum.cpp
+  - icon: ':heavy_check_mark:'
+    path: 2Dquery/partial_offline_point_add_rectangle_sum.cpp
+    title: 2Dquery/partial_offline_point_add_rectangle_sum.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/1Dquery/BIT.test.cpp
     title: verify/1Dquery/BIT.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
     title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
-  _isVerificationFailed: false
+  - icon: ':heavy_check_mark:'
+    path: verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
+    title: verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"1Dquery/BIT.cpp\"\n#include <vector>\n#include <iostream>\n\
@@ -39,12 +48,15 @@ data:
   isVerificationFile: false
   path: 1Dquery/BIT.cpp
   requiredBy:
+  - 1Dquery/offline_point_set_range_types.cpp
+  - 2Dquery/partial_offline_point_add_rectangle_sum.cpp
   - 2Dquery/offline_point_add_rectangle_sum.cpp
   timestamp: '2021-03-29 02:52:35+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
   - verify/1Dquery/BIT.test.cpp
+  - verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
+  - verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
 documentation_of: 1Dquery/BIT.cpp
 layout: document
 redirect_from:
