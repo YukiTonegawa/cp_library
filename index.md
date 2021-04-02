@@ -88,14 +88,19 @@ data:
       path: verify/2Dquery/fractional_cascading_query.test.cpp
       title: verify/2Dquery/fractional_cascading_query.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/2Dquery/kth_root.test.cpp
-      title: verify/2Dquery/kth_root.test.cpp
+      path: verify/2Dquery/fractional_cascading_query_update.test.cpp
+      title: verify/2Dquery/fractional_cascading_query_update.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
       title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
       title: verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
+  - name: verify/math
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/math/kth_root.test.cpp
+      title: verify/math/kth_root.test.cpp
   - name: verify/misc
     pages:
     - icon: ':heavy_check_mark:'

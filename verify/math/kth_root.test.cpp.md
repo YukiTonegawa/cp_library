@@ -14,9 +14,9 @@ data:
     PROBLEM: https://old.yosupo.jp/problem/kth_root_integer
     links:
     - https://old.yosupo.jp/problem/kth_root_integer
-  bundledCode: "#line 1 \"verify/2Dquery/kth_root.test.cpp\"\n#include <iostream>\n\
-    #include <limits>\n#include <vector>\n#include <cmath>\n#include <cassert>\n#define\
-    \ PROBLEM \"https://old.yosupo.jp/problem/kth_root_integer\"\n#line 5 \"math/kth_root.cpp\"\
+  bundledCode: "#line 1 \"verify/math/kth_root.test.cpp\"\n#include <iostream>\n#include\
+    \ <limits>\n#include <vector>\n#include <cmath>\n#include <cassert>\n#define PROBLEM\
+    \ \"https://old.yosupo.jp/problem/kth_root_integer\"\n#line 5 \"math/kth_root.cpp\"\
     \n\nuint64_t kth_root_stable(uint64_t x, uint64_t k){\n  if(x==0) return 0;\n\
     \  if(k==1||x==1) return x;\n  if(k>=64) return 1;\n  uint64_t l = 1, r = x;\n\
     \  const static uint64_t threshold = std::numeric_limits<uint64_t>::max();\n \
@@ -35,7 +35,7 @@ data:
     \ uint64_t threshold = std::numeric_limits<uint64_t>::max();\n  while(true){\n\
     \    uint64_t lim = threshold / r, z = 1;\n    for(int i=0;i<k;i++, z*=r) if(z\
     \ > lim) goto upper;\n    if(z > x) upper:r--;\n    else break;\n  }\n  return\
-    \ r;\n}\n#line 8 \"verify/2Dquery/kth_root.test.cpp\"\n\nint main(){\n\tint T;scanf(\"\
+    \ r;\n}\n#line 8 \"verify/math/kth_root.test.cpp\"\n\nint main(){\n\tint T;scanf(\"\
     %d\", &T);\n\tfor(int i=0;i<T;i++) {\n    uint64_t x, k;scanf(\"%llu %llu\", &x,\
     \ &k);\n    uint64_t ans1 = kth_root_fast(x, k);\n    uint64_t ans2 = kth_root_stable(x,\
     \ k);\n    assert(ans1 == ans2);\n    printf(\"%llu\\n\", ans1);\n  }\n}\n"
@@ -48,15 +48,15 @@ data:
   dependsOn:
   - math/kth_root.cpp
   isVerificationFile: true
-  path: verify/2Dquery/kth_root.test.cpp
+  path: verify/math/kth_root.test.cpp
   requiredBy: []
-  timestamp: '2021-03-29 03:57:54+09:00'
+  timestamp: '2021-04-03 04:32:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/2Dquery/kth_root.test.cpp
+documentation_of: verify/math/kth_root.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/2Dquery/kth_root.test.cpp
-- /verify/verify/2Dquery/kth_root.test.cpp.html
-title: verify/2Dquery/kth_root.test.cpp
+- /verify/verify/math/kth_root.test.cpp
+- /verify/verify/math/kth_root.test.cpp.html
+title: verify/math/kth_root.test.cpp
 ---

@@ -43,14 +43,15 @@ data:
     \ = std::make_pair(0, x.size());\n    build(root, 0, x.size());\n  }\n  fractional_cascading_enumerate(const\
     \ std::vector<point> &points){\n    build(points);\n  }\n  void query(node *v,\
     \ Idx lx, Idx rx, int ly, int ry, std::vector<point> &ret){\n    Idx a = x[v->x_range.first],\
-    \ b = x[v->x_range.second-1];\n    if(!v || rx <= a || b < lx || lx >= rx || ly\
-    \ >= ry) return;\n    if(lx <= a && b < rx){\n      for(int i=ly;i<ry;i++) ret.push_back(p[v->info[i][4]]);\n\
+    \ b = x[v->x_range.second-1];\n    if(!v || rx <= a || b < lx || ly >= ry) return;\n\
+    \    if(lx <= a && b < rx){\n      for(int i=ly;i<ry;i++) ret.push_back(p[v->info[i][4]]);\n\
     \      return;\n    }\n    query(v->ch[0], lx, rx, v->info[ly][1], v->info[ry-1][0],\
     \ ret);\n    query(v->ch[1], lx, rx, v->info[ly][3], v->info[ry-1][2], ret);\n\
-    \  }\n  std::vector<point> query(Idx lx, Idx rx, Idx ly, Idx ry){\n    int ly_idx\
-    \ = std::lower_bound(y.begin(), y.end(), ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(),\
-    \ y.end(), ry) - y.begin();\n    std::vector<point> ret;\n    query(root, lx,\
-    \ rx, ly_idx, ry_idx, ret);\n    return ret;\n  }\n};\n#line 5 \"verify/2Dquery/fractional_cascading_enumerate.test.cpp\"\
+    \  }\n  std::vector<point> query(Idx lx, Idx rx, Idx ly, Idx ry){\n    if(lx >=\
+    \ rx || ly >= ry) return {};\n    int ly_idx = std::lower_bound(y.begin(), y.end(),\
+    \ ly) - y.begin();\n    int ry_idx = std::lower_bound(y.begin(), y.end(), ry)\
+    \ - y.begin();\n    std::vector<point> ret;\n    query(root, lx, rx, ly_idx, ry_idx,\
+    \ ret);\n    return ret;\n  }\n};\n#line 5 \"verify/2Dquery/fractional_cascading_enumerate.test.cpp\"\
     \n\n\n#line 8 \"verify/2Dquery/fractional_cascading_enumerate.test.cpp\"\nint\
     \ main(){\n  std::cin.tie(nullptr);\n  std::ios::sync_with_stdio(false);\n  int\
     \ n;\n  std::cin >> n;\n  std::vector<std::tuple<int, int, int>> v(n);\n  int\
@@ -79,7 +80,7 @@ data:
   isVerificationFile: true
   path: verify/2Dquery/fractional_cascading_enumerate.test.cpp
   requiredBy: []
-  timestamp: '2021-04-01 23:41:40+09:00'
+  timestamp: '2021-04-03 04:32:30+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2Dquery/fractional_cascading_enumerate.test.cpp

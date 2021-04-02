@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/2Dquery/kth_root.test.cpp
-    title: verify/2Dquery/kth_root.test.cpp
+    path: verify/math/kth_root.test.cpp
+    title: verify/math/kth_root.test.cpp
   _isVerificationFailed: false
   _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -57,7 +57,7 @@ data:
   timestamp: '2021-03-28 03:35:18+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/2Dquery/kth_root.test.cpp
+  - verify/math/kth_root.test.cpp
 documentation_of: math/kth_root.cpp
 layout: document
 redirect_from:

@@ -16,6 +16,9 @@ data:
     path: verify/1Dquery/BIT.test.cpp
     title: verify/1Dquery/BIT.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/2Dquery/fractional_cascading_query_update.test.cpp
+    title: verify/2Dquery/fractional_cascading_query_update.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
     title: verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -55,6 +58,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/1Dquery/BIT.test.cpp
+  - verify/2Dquery/fractional_cascading_query_update.test.cpp
   - verify/2Dquery/offline_point_add_rectangle_sum.test.cpp
   - verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp
 documentation_of: 1Dquery/BIT.cpp
