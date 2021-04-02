@@ -1,3 +1,14 @@
 {
-"union_find/union_find.test.cpp": "2021-03-12 22:42:01 +0900"
+"verify/1Dquery/BIT.test.cpp": "2021-03-29 03:12:03 +0900",
+"verify/1Dquery/BIT_range_add_range_sum.test.cpp": "2021-03-29 03:57:54 +0900",
+"verify/1Dquery/accumulate1D.test.cpp": "2021-04-01 22:47:51 +0900",
+"verify/1Dquery/binary_trie_patricia.test.cpp": "2021-04-01 23:58:08 +0900",
+"verify/2Dquery/fractional_cascading_enumerate.test.cpp": "2021-04-03 04:32:30 +0900",
+"verify/2Dquery/fractional_cascading_query.test.cpp": "2021-04-03 04:32:30 +0900",
+"verify/2Dquery/fractional_cascading_query_update.test.cpp": "2021-04-03 04:32:30 +0900",
+"verify/2Dquery/offline_point_add_rectangle_sum.test.cpp": "2021-04-01 22:47:51 +0900",
+"verify/2Dquery/partial_offline_point_add_rectangle_sum.test.cpp": "2021-04-01 21:41:27 +0900",
+"verify/math/kth_root.test.cpp": "2021-04-03 04:32:30 +0900",
+"verify/misc/pseudo_segment_tree.test.cpp": "2021-04-01 22:47:51 +0900",
+"verify/union_find/union_find.test.cpp": "2021-03-29 03:12:03 +0900"
 }
