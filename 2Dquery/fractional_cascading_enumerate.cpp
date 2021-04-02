@@ -68,7 +68,7 @@ public:
   }
   void query(node *v, Idx lx, Idx rx, int ly, int ry, std::vector<point> &ret){
     Idx a = x[v->x_range.first], b = x[v->x_range.second-1];
-    if(!v || rx <= a || b < lx || lx >= rx || ly >= ry) return;
+    if(!v || rx <= a || b < lx || ly >= ry) return;
     if(lx <= a && b < rx){
       for(int i=ly;i<ry;i++) ret.push_back(p[v->info[i][4]]);
       return;
@@ -77,6 +77,7 @@ public:
     query(v->ch[1], lx, rx, v->info[ly][3], v->info[ry-1][2], ret);
   }
   std::vector<point> query(Idx lx, Idx rx, Idx ly, Idx ry){
+    if(lx >= rx || ly >= ry) return {};
     int ly_idx = std::lower_bound(y.begin(), y.end(), ly) - y.begin();
     int ry_idx = std::lower_bound(y.begin(), y.end(), ry) - y.begin();
     std::vector<point> ret;
